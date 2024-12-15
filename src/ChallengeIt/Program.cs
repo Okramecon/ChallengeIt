@@ -1,6 +1,9 @@
+using System.Text.Json;
 using ChallengeIt.Application.DependencyInjection;
 using ChallengeIt.Endpoints;
 using ChallengeIt.Infrastructure.DependencyInjection;
+using ChallengeIt.Middlewares;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,18 +13,20 @@ var builder = WebApplication.CreateBuilder(args);
 
     builder.Services
         .AddApplication()
-        .AddInfrastructure();
+        .AddInfrastructure(builder.Configuration);
 }
 
 var app = builder.Build();
 {
-    app.UseExceptionHandler();
+    app.UseExceptionHandler(AppBuilderActions.HandleException);
     
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseAuthentication();
     
     app.UseHttpsRedirection();
     app.UseApplicationEndpoints();

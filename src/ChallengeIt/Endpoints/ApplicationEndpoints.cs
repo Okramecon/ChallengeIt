@@ -4,7 +4,9 @@ public static class ApplicationEndpoints
 {
     public static IEndpointRouteBuilder UseApplicationEndpoints(this IEndpointRouteBuilder builder)
     {
-        builder.UseUserEndpoints();
+        builder
+            .UseUserEndpoints()
+            .UseAuthEndpoints();
         
         return builder;
     }

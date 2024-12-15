@@ -12,12 +12,12 @@ public static class UsersEndpoints
         var group = builder.MapGroup("api/users")
             .WithOpenApi();
 
-        group.MapPost(string.Empty, UseUserEndpoints).WithSummary("Creates a new user");
+        group.MapPost(string.Empty, CreateUser).WithSummary("Creates a new user");
         
         return group;
     }
 
-    public static async Task<IResult> CreateUser(
+    private static async Task<IResult> CreateUser(
         [FromServices] ISender mediator,
         [FromBody] CreateUserRequest request,
         CancellationToken cancellationToken = default)

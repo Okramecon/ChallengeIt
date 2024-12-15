@@ -2,7 +2,7 @@
 
 namespace ChallengeIt.Endpoints;
 
-public static  class CustomResults
+public static class CustomResults
 {
     public static IResult Problem(List<Error> errors)
     {
