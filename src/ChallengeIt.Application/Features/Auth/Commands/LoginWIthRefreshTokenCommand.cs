@@ -23,7 +23,7 @@ public class LoginWIthRefreshTokenCommandHandler(
     {
         var refreshToken = await _usersRepository.GetRefreshTokenAsync(request.RefreshToken, cancellationToken);
         
-        if (refreshToken is null || refreshToken.ExpiresOnUtc < _dateTimeProvider.UtcNow)
+        if (refreshToken is null || refreshToken.ExpiresAt < _dateTimeProvider.UtcNow)
             return Error.Unauthorized("Invalid refresh token or token has expired");
         
         var user = await _usersRepository.GetByIdAsync(refreshToken.UserId, cancellationToken);
@@ -34,7 +34,7 @@ public class LoginWIthRefreshTokenCommandHandler(
         var accessToken = _tokenProvider.GenerateJwtToken(user.Id, user.Email, user.Username);
 
         refreshToken.Token = _tokenProvider.GenerateRefreshToken();
-        refreshToken.ExpiresOnUtc = _dateTimeProvider.UtcNow.AddDays(7);
+        refreshToken.ExpiresAt = _dateTimeProvider.UtcNow.AddDays(7);
         
         await _usersRepository.UpdateRefreshTokenAsync(refreshToken, cancellationToken);
         

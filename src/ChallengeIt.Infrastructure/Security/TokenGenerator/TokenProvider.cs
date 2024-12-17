@@ -12,7 +12,7 @@ public class TokenProvider(IOptions<JwtSettings> jwtSettings): ITokenProvider
 {
     private readonly JwtSettings _jwtSettings = jwtSettings.Value;
     
-    public string GenerateJwtToken(ulong id, string email, string username)
+    public string GenerateJwtToken(long id, string email, string username)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

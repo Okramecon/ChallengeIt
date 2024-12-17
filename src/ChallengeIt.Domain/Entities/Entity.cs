@@ -1,6 +1,9 @@
-﻿namespace ChallengeIt.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ChallengeIt.Domain.Entities;
 
 public abstract class Entity<TKey> where TKey : struct
 {
-    public TKey Id { get; set; }
+    [Column("id")]
+    public TKey Id { get; init; }
 }

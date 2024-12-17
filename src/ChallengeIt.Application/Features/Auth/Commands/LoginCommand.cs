@@ -19,7 +19,7 @@ public class LoginCommandHandler(
 {
     public async Task<ErrorOr<LoginResult>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        User? user;
+        User? user = null;
         
         if (!string.IsNullOrEmpty(request.Username))
         {
@@ -28,14 +28,19 @@ public class LoginCommandHandler(
             if (user is null)
                 return Error.NotFound($"User {request.Email} was not found");
         }
+        else if (!string.IsNullOrEmpty(request.Email))
+        {
+            user = await usersRepository.GetByEmailAsync(request.Email, cancellationToken);
+            
+            if (user is null)
+                return Error.NotFound($"User {request.Email} was not found");
+        }
 
-        user = await usersRepository.GetByEmailAsync(request.Email, cancellationToken);
-        
         if (user is null)
-            return Error.NotFound($"User {request.Email} was not found");
+            return Error.Validation("Login", "Login model has to provide username or email");
         
         if (!passwordHasher.Verify(user.PasswordHash, request.Password))
-            return Error.Forbidden("Invalid password");
+            return Error.Unauthorized("Login","Invalid credentials");
         
         var accessToken = tokenProvider.GenerateJwtToken(user.Id, user.Username, user.Email);
 
@@ -44,7 +49,7 @@ public class LoginCommandHandler(
             Id = Guid.NewGuid(),
             UserId = user.Id,
             Token = tokenProvider.GenerateRefreshToken(),
-            ExpiresOnUtc = dateTimeProvider.UtcNow.AddDays(7)
+            ExpiresAt = dateTimeProvider.UtcNow.AddDays(7)
         };
 
         await usersRepository.UpdateRefreshTokenAsync(refreshToken, cancellationToken);

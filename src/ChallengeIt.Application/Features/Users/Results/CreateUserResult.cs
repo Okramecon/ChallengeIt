@@ -1,3 +1,3 @@
 ﻿namespace ChallengeIt.Application.Features.Users.Results;
 
-public record CreateUserResult(ulong UserId);
+public record CreateUserResult(long UserId);

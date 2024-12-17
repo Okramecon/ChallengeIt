@@ -1,7 +1,10 @@
-﻿using System.Text;
+﻿using System.Data;
+using System.Data.Common;
+using System.Text;
 using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
+using ChallengeIt.Infrastructure.Persistence.Dapper;
 using ChallengeIt.Infrastructure.Persistence.Repositories;
 using ChallengeIt.Infrastructure.Security;
 using ChallengeIt.Infrastructure.Security.TokenGenerator;
@@ -18,14 +21,28 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAuthentication(configuration);
-        
-        services.AddScoped<IUsersRepository, UsersRepository>();
+
+        services.AddPersistence(configuration);
         
         services.AddSingleton<IDateTimeProvider, DateTImeProvider>();
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
         
         return services;
-    } 
+    }
+
+    private static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        if (string.IsNullOrEmpty(connectionString))
+            throw new ApplicationException("No connection string found.");
+
+        var dapperContextOptions = new DapperContextOptions(connectionString);
+        
+        services.AddSingleton<IDapperContext, DapperContext>(_ => new DapperContext(dapperContextOptions));
+        services.AddSingleton<DapperContextOptions>(_ => dapperContextOptions);
+
+        services.AddScoped<IUsersRepository, UsersRepository>();
+    }
     
     private static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
@@ -35,7 +52,9 @@ public static class ServiceCollectionExtensions
         var jwtSettings = configuration.GetSection(nameof(JwtSettings)).Get<JwtSettings>() 
                           ?? throw new ArgumentException("JWT settings are required.");
 
-        if (string.IsNullOrEmpty(jwtSettings.Issuer) || string.IsNullOrEmpty(jwtSettings.Audience) || string.IsNullOrEmpty(jwtSettings.Secret))
+        if (string.IsNullOrEmpty(jwtSettings.Issuer) || 
+            string.IsNullOrEmpty(jwtSettings.Audience) || 
+            string.IsNullOrEmpty(jwtSettings.Secret))
         {
             throw new ArgumentException("JWT issuer, audience, and secret are required.");
         }

@@ -22,8 +22,8 @@ public sealed class PasswordHasher : IPasswordHasher
     public bool Verify(string hashedPassword, string providedPassword)
     {
         var split = hashedPassword.Split('-');
-        var hash = Convert.FromBase64String(split[0]);
-        var salt = Convert.FromBase64String(split[1]);
+        var hash = Convert.FromHexString(split[0]);
+        var salt = Convert.FromHexString(split[1]);
         
         var inputHash = Rfc2898DeriveBytes.Pbkdf2(providedPassword, salt, Iterations, _algorithm, HashSize);
         

@@ -1,14 +1,28 @@
-﻿using ChallengeIt.Domain.Entities.Contracts;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using ChallengeIt.Domain.Entities.Contracts;
 
 namespace ChallengeIt.Domain.Entities;
 
-public class User(string username, string passwordHash, string email) : Entity<ulong>, ITrackable
+public class User : Entity<long>, ITrackable
 {
-    public string Username { get; set; } = username;
-    public string Email { get; set; } = email;
-    public string PasswordHash { get; set; } = passwordHash;
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-    public DateTime CreateAt { get; set; }
-    public DateTime? UpdateAt { get; set; }
+    [Column("username")]
+    public required string Username { get; set; }
+    
+    [Column("email")]
+    public required string Email { get; init; }
+    
+    [Column("password_hash")]
+    public required string PasswordHash { get; init; }
+    
+    [Column("first_name")]
+    public string? FirstName { get; init; }
+    
+    [Column("last_name")]
+    public string? LastName { get; init; }
+    
+    [Column("created_at")]
+    public DateTime CreatedAt { get; set; }
+    
+    [Column("updated_at")]
+    public DateTime? UpdatedAt { get; set; }
 }

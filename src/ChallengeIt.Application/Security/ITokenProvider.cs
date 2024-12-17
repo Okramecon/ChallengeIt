@@ -2,6 +2,6 @@
 
 public interface ITokenProvider
 {
-    string GenerateJwtToken(ulong id, string email, string username);
+    string GenerateJwtToken(long id, string email, string username);
     string GenerateRefreshToken();
 }
