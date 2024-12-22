@@ -16,8 +16,8 @@ public static class AuthEndpoints
             .WithOpenApi();
 
         group.MapPost(string.Empty, LoginWithCredentials).WithSummary("Creates a new user");
-        group.MapPost("refresh", LoginWithRefreshToken).WithSummary("Refreshes the user token");
-        return group;
+        group.MapPost("refresh", LoginWithRefreshToken).WithSummary("Refreshes the user token").RequireAuthorization();
+        return builder;
     }
 
     private static async Task<IResult> LoginWithCredentials(

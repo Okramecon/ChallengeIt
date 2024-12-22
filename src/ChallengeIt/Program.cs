@@ -1,9 +1,7 @@
-using System.Text.Json;
 using ChallengeIt.Application.DependencyInjection;
 using ChallengeIt.Endpoints;
 using ChallengeIt.Infrastructure.DependencyInjection;
 using ChallengeIt.Middlewares;
-using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +25,7 @@ var app = builder.Build();
     }
 
     app.UseAuthentication();
+    app.UseAuthorization();
     
     app.UseHttpsRedirection();
     app.UseApplicationEndpoints();

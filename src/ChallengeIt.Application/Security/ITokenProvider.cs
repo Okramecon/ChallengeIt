@@ -3,5 +3,5 @@
 public interface ITokenProvider
 {
     string GenerateJwtToken(long id, string email, string username);
-    string GenerateRefreshToken();
+    (string Token, DateTime ExpiresAt) GenerateRefreshToken();
 }

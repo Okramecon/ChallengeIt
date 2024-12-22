@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ChallengeIt.API.Contracts\ChallengeIt.API.Contracts.csproj" />
       <ProjectReference Include="..\ChallengeIt.Domain\ChallengeIt.Domain.csproj" />
     </ItemGroup>
 

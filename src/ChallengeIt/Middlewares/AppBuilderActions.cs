@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 
 namespace ChallengeIt.Middlewares;
 
-public class AppBuilderActions
+public static class AppBuilderActions
 {
     public static void HandleException(IApplicationBuilder appBuilder)
     {

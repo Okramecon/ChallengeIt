@@ -2,10 +2,10 @@
 
 public class JwtSettings
 {
-    public const string Section = "JwtSettings";
-
-    public string Audience { get; set; } = null!;
-    public string Issuer { get; set; } = null!;
-    public string Secret { get; set; } = null!;
-    public int TokenExpirationInMinutes { get; set; }
+    public required string Audience { get; init; }
+    public required string Issuer { get; init; }
+    public required string Secret { get; init; }
+    
+    public required int RefreshTokenExpirationInMinutes { get; init; }
+    public required int AccessTokenExpirationInMinutes { get; init; }
 }

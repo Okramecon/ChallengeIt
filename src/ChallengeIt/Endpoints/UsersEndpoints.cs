@@ -1,5 +1,7 @@
-﻿using ChallengeIt.API.Contracts.Users;
+﻿using System.Security.Claims;
+using ChallengeIt.API.Contracts.Users;
 using ChallengeIt.Application.Features.Users.Commands;
+using ChallengeIt.Application.Features.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,8 +15,9 @@ public static class UsersEndpoints
             .WithOpenApi();
 
         group.MapPost(string.Empty, CreateUser).WithSummary("Creates a new user");
+        group.MapGet("information", GetCurrentUserInformation).RequireAuthorization().WithSummary("Returns current user information");
         
-        return group;
+        return builder;
     }
 
     private static async Task<IResult> CreateUser(
@@ -34,6 +37,18 @@ public static class UsersEndpoints
         return result.Match(
             user => Results.Ok(user.UserId),
             CustomResults.Problem
-            ) ;
+        ) ;
+    }
+
+    private static async Task<IResult> GetCurrentUserInformation(
+        [FromServices] ISender mediator,
+        ClaimsPrincipal user)
+    {
+        long.TryParse(user.FindFirstValue(ClaimTypes.NameIdentifier), out long userId);
+        var result = await mediator.Send(new GetUserInformationQuery(userId));
+        return result.Match(
+            userInfo => Results.Ok(userInfo),
+            CustomResults.Problem
+        );
     }
 }

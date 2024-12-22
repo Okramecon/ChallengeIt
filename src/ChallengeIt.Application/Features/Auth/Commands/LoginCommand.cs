@@ -43,14 +43,17 @@ public class LoginCommandHandler(
             return Error.Unauthorized("Login","Invalid credentials");
         
         var accessToken = tokenProvider.GenerateJwtToken(user.Id, user.Username, user.Email);
-
+        var (refreshTokenValue, refreshExpiresAt) = tokenProvider.GenerateRefreshToken(); 
+        
         var refreshToken = new RefreshToken()
         {
             Id = Guid.NewGuid(),
             UserId = user.Id,
-            Token = tokenProvider.GenerateRefreshToken(),
-            ExpiresAt = dateTimeProvider.UtcNow.AddDays(7)
+            Token = refreshTokenValue,
+            ExpiresAt = refreshExpiresAt
         };
+
+        
 
         await usersRepository.UpdateRefreshTokenAsync(refreshToken, cancellationToken);
         

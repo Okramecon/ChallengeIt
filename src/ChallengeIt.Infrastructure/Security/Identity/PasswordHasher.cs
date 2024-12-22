@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using ChallengeIt.Application.Security;
 
-namespace ChallengeIt.Infrastructure.Security;
+namespace ChallengeIt.Infrastructure.Security.Identity;
 
 public sealed class PasswordHasher : IPasswordHasher
 {

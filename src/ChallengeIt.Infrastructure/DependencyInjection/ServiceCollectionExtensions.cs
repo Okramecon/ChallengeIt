@@ -1,18 +1,15 @@
-﻿using System.Data;
-using System.Data.Common;
-using System.Text;
-using ChallengeIt.Application.Persistence;
+﻿using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
 using ChallengeIt.Infrastructure.Persistence.Dapper;
 using ChallengeIt.Infrastructure.Persistence.Repositories;
-using ChallengeIt.Infrastructure.Security;
+using ChallengeIt.Infrastructure.Security.Identity;
 using ChallengeIt.Infrastructure.Security.TokenGenerator;
+using ChallengeIt.Infrastructure.Security.TokenValidation;
 using ChallengeIt.Infrastructure.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 
 namespace ChallengeIt.Infrastructure.DependencyInjection;
 
@@ -21,6 +18,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAuthentication(configuration);
+        services.AddAuthorization();
 
         services.AddPersistence(configuration);
         
@@ -33,48 +31,32 @@ public static class ServiceCollectionExtensions
     private static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
-        if (string.IsNullOrEmpty(connectionString))
-            throw new ApplicationException("No connection string found.");
+
+        if (string.IsNullOrWhiteSpace(connectionString))
+        {
+            throw new InvalidOperationException("The connection string 'DefaultConnection' is missing or empty. Ensure it is properly configured in appsettings.json or environment variables.");
+        }
 
         var dapperContextOptions = new DapperContextOptions(connectionString);
-        
-        services.AddSingleton<IDapperContext, DapperContext>(_ => new DapperContext(dapperContextOptions));
-        services.AddSingleton<DapperContextOptions>(_ => dapperContextOptions);
+        services.AddSingleton(dapperContextOptions);
+
+        services.AddSingleton<IDapperContext, DapperContext>(_ => 
+            new DapperContext(dapperContextOptions));
 
         services.AddScoped<IUsersRepository, UsersRepository>();
     }
     
-    private static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
+    private static void AddAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.Section));
+        services.AddOptions<JwtSettings>()
+            .Bind(configuration.GetSection(nameof(JwtSettings)))
+            .ValidateOnStart();
+
         services.AddSingleton<ITokenProvider, TokenProvider>();
-
-        var jwtSettings = configuration.GetSection(nameof(JwtSettings)).Get<JwtSettings>() 
-                          ?? throw new ArgumentException("JWT settings are required.");
-
-        if (string.IsNullOrEmpty(jwtSettings.Issuer) || 
-            string.IsNullOrEmpty(jwtSettings.Audience) || 
-            string.IsNullOrEmpty(jwtSettings.Secret))
-        {
-            throw new ArgumentException("JWT issuer, audience, and secret are required.");
-        }
-
+        
         services
+            .ConfigureOptions<JwtBearerTokenValidationConfiguration>()
             .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings.Issuer,
-                    ValidAudience = jwtSettings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
-                };
-            });
-
-        return services;
+            .AddJwtBearer();
     }
 }

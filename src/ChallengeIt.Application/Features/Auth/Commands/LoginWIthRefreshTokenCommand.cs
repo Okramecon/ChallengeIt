@@ -33,8 +33,7 @@ public class LoginWIthRefreshTokenCommandHandler(
         
         var accessToken = _tokenProvider.GenerateJwtToken(user.Id, user.Email, user.Username);
 
-        refreshToken.Token = _tokenProvider.GenerateRefreshToken();
-        refreshToken.ExpiresAt = _dateTimeProvider.UtcNow.AddDays(7);
+        (refreshToken.Token, refreshToken.ExpiresAt) = _tokenProvider.GenerateRefreshToken();
         
         await _usersRepository.UpdateRefreshTokenAsync(refreshToken, cancellationToken);
         
