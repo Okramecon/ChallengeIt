@@ -3,6 +3,7 @@ using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
 using ChallengeIt.Infrastructure.Persistence.Dapper;
 using ChallengeIt.Infrastructure.Persistence.Repositories;
+using ChallengeIt.Infrastructure.Security.CurrentUserProvider;
 using ChallengeIt.Infrastructure.Security.Identity;
 using ChallengeIt.Infrastructure.Security.TokenGenerator;
 using ChallengeIt.Infrastructure.Security.TokenValidation;
@@ -44,10 +45,14 @@ public static class ServiceCollectionExtensions
             new DapperContext(dapperContextOptions));
 
         services.AddScoped<IUsersRepository, UsersRepository>();
+        services.AddScoped<IChallengesRepository, ChallengesRepository>();
     }
     
     private static void AddAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddHttpContextAccessor();
+        services.AddSingleton<ICurrentUserProvider, CurrentUserProvider>();
+        
         services.AddOptions<JwtSettings>()
             .Bind(configuration.GetSection(nameof(JwtSettings)))
             .ValidateOnStart();

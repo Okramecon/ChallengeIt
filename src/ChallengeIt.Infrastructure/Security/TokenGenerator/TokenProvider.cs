@@ -21,8 +21,7 @@ public class TokenProvider(IOptions<JwtSettings> jwtSettings, IDateTimeProvider 
 
         var claims = new List<Claim>
         {
-            new(JwtRegisteredClaimNames.NameId, id.ToString()),
-            new(JwtRegisteredClaimNames.Name, username),
+            new(JwtRegisteredClaimNames.UniqueName, username),
             new(JwtRegisteredClaimNames.Email, email),
             new("id", id.ToString()),
         };

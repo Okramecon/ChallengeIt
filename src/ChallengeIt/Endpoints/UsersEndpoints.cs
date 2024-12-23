@@ -2,6 +2,7 @@
 using ChallengeIt.API.Contracts.Users;
 using ChallengeIt.Application.Features.Users.Commands;
 using ChallengeIt.Application.Features.Users.Queries;
+using ChallengeIt.Application.Security;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,9 +43,10 @@ public static class UsersEndpoints
 
     private static async Task<IResult> GetCurrentUserInformation(
         [FromServices] ISender mediator,
+        [FromServices] ICurrentUserProvider currentUserProvider,
         ClaimsPrincipal user)
     {
-        long.TryParse(user.FindFirstValue(ClaimTypes.NameIdentifier), out long userId);
+        var userId = currentUserProvider.GetUserId();
         var result = await mediator.Send(new GetUserInformationQuery(userId));
         return result.Match(
             userInfo => Results.Ok(userInfo),

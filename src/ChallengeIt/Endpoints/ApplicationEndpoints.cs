@@ -6,7 +6,8 @@ public static class ApplicationEndpoints
     {
         builder
             .UseUserEndpoints()
-            .UseAuthEndpoints();
+            .UseAuthEndpoints()
+            .UseChallengeEndpoints();
         
         return builder;
     }
