@@ -1,3 +1,9 @@
-﻿namespace ChallengeIt.Domain.Models.Paging;
+﻿using ChallengeIt.Domain.Entities;
 
-public record Page<TEntity>(int PageNumber, int PageSize, int TotalCount, TEntity[] Items);
+namespace ChallengeIt.Domain.Models.Paging;
+
+public record Page<TEntity>(
+    int PageNumber, 
+    int PageSize, 
+    int TotalCount, 
+    TEntity[] Items);

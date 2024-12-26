@@ -7,6 +7,10 @@ public static class ApplicationErrors
     public static ApplicationError EmailAlreadyInUse = new (1003, "Email is already in use");
     public static ApplicationError UsernameAlreadyInUse = new (1004, "Username is already in use");
     public static ApplicationError MissedRequiredClaims = new (1005, "Required claims are missed");
+    
+    public static ApplicationError ForbiddenAccessToChallenge = new (2001, "Forbidden access to challenge");
+    
+    public static ApplicationError ResourceNotFound = new (01, "Resource Not Found");
 }
 
 public record struct ApplicationError(int Code, string Message)

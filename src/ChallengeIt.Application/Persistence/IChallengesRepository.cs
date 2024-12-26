@@ -2,7 +2,6 @@
 
 namespace ChallengeIt.Application.Persistence;
 
-public interface IChallengesRepository
+public interface IChallengesRepository : IBaseCrudRepository<Challenge, Guid>
 {
-    Task<Guid> CreateAsync(Challenge challenge);
 }

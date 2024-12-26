@@ -5,8 +5,15 @@ using Dapper;
 
 namespace ChallengeIt.Infrastructure.Persistence.Repositories;
 
-public class ChallengesRepository(IDapperContext context) : IChallengesRepository
+public class ChallengesRepository : BaseCrudRepository<Challenge, Guid>, IChallengesRepository
 {
+    private readonly IDapperContext _context;
+
+    public ChallengesRepository(IDapperContext context) : base(context, "challenges")
+    {
+        _context = context;
+    }
+
     private const string CreateChallengeQuery =
         """
         INSERT INTO challenges (id, user_id, title, bet_amount, start_date, end_date, missed_days_count,
@@ -17,7 +24,7 @@ public class ChallengesRepository(IDapperContext context) : IChallengesRepositor
     
     public async Task<Guid> CreateAsync(Challenge challenge)
     {
-        using var connection = context.CreateConnection();
+        using var connection = _context.CreateConnection();
         connection.Open();
         return await connection.QuerySingleAsync<Guid>(CreateChallengeQuery, challenge);
     }

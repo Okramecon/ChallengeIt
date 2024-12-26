@@ -1,4 +1,5 @@
 ﻿using ChallengeIt.Application.Features.Challenges.Commands;
+using ChallengeIt.Application.Features.Challenges.Commands.CreateChallenge;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +10,11 @@ public static class ChallengeEndpoints
     public static IEndpointRouteBuilder UseChallengeEndpoints(this IEndpointRouteBuilder builder)
     {
         var group = builder.MapGroup("api/challenges")
+            .RequireAuthorization()
             .WithOpenApi();
 
         group.MapPost(string.Empty, CreateChallenge).WithSummary("Creates a new challenge.");
+        group.MapPut(string.Empty, UpdateChallenge).WithSummary("Updates existing challenge.");
         
         return builder;
     }
@@ -26,5 +29,15 @@ public static class ChallengeEndpoints
             id => Results.Ok(id),
             CustomResults.Problem
         ) ;
+    }
+
+    private static async Task<IResult> UpdateChallenge(
+        [FromServices] ISender mediator,
+        [FromBody] UpdateChallengeCommand request)
+    {
+        var result = await mediator.Send(request);
+        return result.Match(
+            _ => Results.NoContent(),
+            CustomResults.Problem);
     }
 }
