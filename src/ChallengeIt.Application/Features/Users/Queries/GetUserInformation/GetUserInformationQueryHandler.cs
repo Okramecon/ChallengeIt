@@ -1,11 +1,9 @@
 ﻿using ChallengeIt.API.Contracts.Users;
 using ChallengeIt.Application.Persistence;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
-namespace ChallengeIt.Application.Features.Users.Queries;
-
-public record GetUserInformationQuery(long UserId) : IRequest<ErrorOr<GetUserInfoResponse>>;
+namespace ChallengeIt.Application.Features.Users.Queries.GetUserInformation;
 
 public class GetUserInformationQueryHandler(IUsersRepository usersRepository) : IRequestHandler<GetUserInformationQuery, ErrorOr<GetUserInfoResponse>>
 {

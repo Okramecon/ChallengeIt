@@ -4,9 +4,7 @@ using ChallengeIt.Domain.Errors;
 using ErrorOr;
 using MediatR;
 
-namespace ChallengeIt.Application.Features.Challenges.Commands;
-
-public record UpdateChallengeCommand(Guid Id, string Title) : IRequest<ErrorOr<Success>>;
+namespace ChallengeIt.Application.Features.Challenges.Commands.UpdateChallenge;
 
 public class UpdateChallengeCommandHandler(
     IChallengesRepository challengesRepository,

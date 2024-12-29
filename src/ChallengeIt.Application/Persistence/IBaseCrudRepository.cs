@@ -8,7 +8,7 @@ public interface IBaseCrudRepository<TEntity, TKey>
     where TKey : struct
 {
     Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellationToken = default);
-    Task<Page<TEntity>?> GetPageAsync(PageRequest page, CancellationToken cancellationToken = default);
+    Task<Page<TEntity>> GetPageAsync(PageRequest page, CancellationToken cancellationToken = default);
     Task<TKey> CreateAsync(TEntity entity, CancellationToken cancellationToken = default);
     Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
     Task DeleteAsync(TKey id, CancellationToken cancellationToken = default);

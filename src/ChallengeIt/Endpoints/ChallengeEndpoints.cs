@@ -1,5 +1,6 @@
-﻿using ChallengeIt.Application.Features.Challenges.Commands;
-using ChallengeIt.Application.Features.Challenges.Commands.CreateChallenge;
+﻿using ChallengeIt.Application.Features.Challenges.Commands.CreateChallenge;
+using ChallengeIt.Application.Features.Challenges.Commands.UpdateChallenge;
+using ChallengeIt.Application.Features.Challenges.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ public static class ChallengeEndpoints
             .RequireAuthorization()
             .WithOpenApi();
 
+        group.MapGet("my", GetCurrentUserChallenges).WithSummary("Gets all challenges belonging to the current user.");
         group.MapPost(string.Empty, CreateChallenge).WithSummary("Creates a new challenge.");
         group.MapPut(string.Empty, UpdateChallenge).WithSummary("Updates existing challenge.");
         
@@ -39,5 +41,23 @@ public static class ChallengeEndpoints
         return result.Match(
             _ => Results.NoContent(),
             CustomResults.Problem);
+    }
+
+    private static async Task<IResult> GetCurrentUserChallenges(
+        [FromServices] ISender mediator,
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 1000,
+        CancellationToken cancellationToken = default)
+    {
+        if (pageNumber < 1 || pageSize < 1)
+            Results.BadRequest("Page number and/or page size must be greater than 0.");
+        
+        var result = await mediator.Send(new GetUserChallengesListQuery()
+        {
+            PageNumber = pageNumber,
+            PageSize = pageSize
+        });
+        
+        return Results.Ok(result.Value);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ChallengeIt.Domain.Entities;
+using ChallengeIt.Domain.Models.User;
 
 namespace ChallengeIt.Application.Persistence;
 
@@ -13,4 +14,7 @@ public interface IUsersRepository
     Task<bool> IsUsedUsernameAsync(string userName, CancellationToken cancellationToken = default);
     Task UpdateRefreshTokenAsync(RefreshToken token, CancellationToken cancellationToken = default);
     Task<RefreshToken?> GetRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken = default);
+
+    Task<List<SearchUserProfileModel>> FindUsersByNameAsync(string userName,
+        CancellationToken cancellationToken = default);
 }

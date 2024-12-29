@@ -1,5 +1,6 @@
 ﻿using ChallengeIt.Application.Persistence;
 using ChallengeIt.Domain.Entities;
+using ChallengeIt.Domain.Models.User;
 using ChallengeIt.Infrastructure.Persistence.Dapper;
 using Dapper;
 
@@ -135,5 +136,20 @@ public class UsersRepository(IDapperContext context) : IUsersRepository
         using var connection = context.CreateConnection();
         return await connection.QuerySingleOrDefaultAsync<RefreshToken>(GetRefreshTokenQuery,
             new { RefreshToken = refreshToken });
+    }
+    
+    public const string FindUserQuery =
+        """
+        SELECT id, username, first_name, last_name
+        FROM users 
+        WHERE Lower(username) LIKE '%' || Lower(@UserName) || '%';;
+        """;
+    
+    public async Task<List<SearchUserProfileModel>> FindUsersByNameAsync(string userName,
+        CancellationToken cancellationToken = default)
+    {
+        using var connection = context.CreateConnection();
+        var profiles = await connection.QueryAsync<SearchUserProfileModel>(FindUserQuery, new { UserName = userName });
+        return profiles.ToList();
     }
 }

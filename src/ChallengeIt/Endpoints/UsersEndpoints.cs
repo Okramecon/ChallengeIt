@@ -1,7 +1,8 @@
 ﻿using System.Security.Claims;
 using ChallengeIt.API.Contracts.Users;
 using ChallengeIt.Application.Features.Users.Commands;
-using ChallengeIt.Application.Features.Users.Queries;
+using ChallengeIt.Application.Features.Users.Queries.FindUserProfile;
+using ChallengeIt.Application.Features.Users.Queries.GetUserInformation;
 using ChallengeIt.Application.Security;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,7 @@ public static class UsersEndpoints
 
         group.MapPost(string.Empty, CreateUser).WithSummary("Creates a new user");
         group.MapGet("information", GetCurrentUserInformation).RequireAuthorization().WithSummary("Returns current user information");
+        group.MapGet("find", FindUserProfile).RequireAuthorization().WithSummary("Finds a user by username");
         
         return builder;
     }
@@ -50,6 +52,21 @@ public static class UsersEndpoints
         var result = await mediator.Send(new GetUserInformationQuery(userId));
         return result.Match(
             userInfo => Results.Ok(userInfo),
+            CustomResults.Problem
+        );
+    }
+    
+    private static async Task<IResult> FindUserProfile(
+        [FromServices] ISender mediator,
+        [FromQuery] string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString) || string.IsNullOrWhiteSpace(searchString))
+            return Results.BadRequest("Search string is empty");
+        
+        var result = await mediator.Send(new FindUserProfileQuery(searchString));
+        
+        return result.Match(
+            profiles => Results.Ok(profiles),
             CustomResults.Problem
         );
     }

@@ -14,26 +14,26 @@ public class BaseCrudRepository<TEntity, TKey>(IDapperContext context, string ta
     where TEntity : Entity<TKey>
     where TKey : struct
 {
-    private readonly IDbConnection _dbConnection = context.CreateConnection();
+    protected readonly IDbConnection DbConnection = context.CreateConnection();
 
     public async Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellationToken = default)
     {
         string query = $"SELECT * FROM \"{tableName}\" WHERE \"id\" = @Id";
-        return await _dbConnection.QueryFirstOrDefaultAsync<TEntity>(query, new { Id = id });
+        return await DbConnection.QueryFirstOrDefaultAsync<TEntity>(query, new { Id = id });
     }
 
-    public async Task<Page<TEntity>?> GetPageAsync(PageRequest pageRequest, CancellationToken cancellationToken = default)
+    public async Task<Page<TEntity>> GetPageAsync(PageRequest pageRequest, CancellationToken cancellationToken = default)
     {
         string query = $"SELECT * FROM \"{tableName}\"  OFFSET @Offset LIMIT @PageSize";
 
-        var items = await _dbConnection.QueryAsync<TEntity>(query, new
+        var items = await DbConnection.QueryAsync<TEntity>(query, new
         {
             Offset = (pageRequest.PageNumber - 1) * pageRequest.PageSize,
-            PageSize = pageRequest.PageSize
+            pageRequest.PageSize
         });
 
         string countQuery = $"SELECT COUNT(*) FROM \"{tableName}\"";
-        int totalItems = await _dbConnection.ExecuteScalarAsync<int>(countQuery);
+        int totalItems = await DbConnection.ExecuteScalarAsync<int>(countQuery);
 
         return new Page<TEntity>
         (
@@ -48,20 +48,20 @@ public class BaseCrudRepository<TEntity, TKey>(IDapperContext context, string ta
     {
         string query = $"INSERT INTO \"{tableName}\" ({GetColumns(true)}) VALUES ({GetValues(true)}) RETURNING \"id\"";
 
-        var id = await _dbConnection.QuerySingleAsync<TKey>(query, entity);
+        var id = await DbConnection.QuerySingleAsync<TKey>(query, entity);
         return id;
     }
 
     public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
     {
         string query = $"UPDATE \"{tableName}\" SET {GetUpdateSetClause()} WHERE \"id\" = @Id";
-        await _dbConnection.ExecuteAsync(query, entity);
+        await DbConnection.ExecuteAsync(query, entity);
     }
 
     public async Task DeleteAsync(TKey id, CancellationToken cancellationToken = default)
     {
         string query = $"DELETE FROM \"{tableName}\" WHERE \"id\" = @Id";
-        await _dbConnection.ExecuteAsync(query, new { Id = id });
+        await DbConnection.ExecuteAsync(query, new { Id = id });
     }
 
     private string GetColumns(bool includeIdentity = false)
