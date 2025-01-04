@@ -1,4 +1,5 @@
-﻿using ChallengeIt.Application.Persistence;
+﻿using System.Data;
+using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
 using ChallengeIt.Infrastructure.Persistence.Dapper;
@@ -8,9 +9,11 @@ using ChallengeIt.Infrastructure.Security.Identity;
 using ChallengeIt.Infrastructure.Security.TokenGenerator;
 using ChallengeIt.Infrastructure.Security.TokenValidation;
 using ChallengeIt.Infrastructure.Utils;
+using Dapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 
 namespace ChallengeIt.Infrastructure.DependencyInjection;
 
@@ -40,12 +43,15 @@ public static class ServiceCollectionExtensions
 
         var dapperContextOptions = new DapperContextOptions(connectionString);
         services.AddSingleton(dapperContextOptions);
-
-        services.AddSingleton<IDapperContext, DapperContext>(_ => 
-            new DapperContext(dapperContextOptions));
-
+        
+        DefaultTypeMap.MatchNamesWithUnderscores = true;
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        
+        services.AddScoped<IDbConnection>(_ => new NpgsqlConnection(connectionString));
+        services.AddScoped<ISqlDbContext, DapperContext>();
         services.AddScoped<IUsersRepository, UsersRepository>();
         services.AddScoped<IChallengesRepository, ChallengesRepository>();
+        services.AddScoped<ICheckInsRepository, CheckInsRepository>();
     }
     
     private static void AddAuthentication(this IServiceCollection services, IConfiguration configuration)

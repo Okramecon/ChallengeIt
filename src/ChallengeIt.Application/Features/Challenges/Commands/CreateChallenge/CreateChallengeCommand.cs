@@ -1,4 +1,5 @@
-﻿using ChallengeIt.Domain.Entities;
+﻿using ChallengeIt.API.Contracts.Challenges;
+using ChallengeIt.Domain.Entities;
 using ErrorOr;
 using MediatR;
 
@@ -8,7 +9,8 @@ public record CreateChallengeCommand(
     string Title,
     DateTime StartDate,
     DateTime EndDate,
-    decimal BetAmount) : IRequest<ErrorOr<Guid>>
+    decimal BetAmount,
+    List<DateTime> Schedule) : IRequest<ErrorOr<CreateChallengeResponse>>
 {
     public Challenge MapToEntity() => new Challenge {
         Title = Title,

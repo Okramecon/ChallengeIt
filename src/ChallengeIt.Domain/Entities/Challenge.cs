@@ -38,6 +38,10 @@ public class Challenge : Entity<Guid>
     
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }
+    
+    public bool IsActive(DateTime currentDate) => Status == ChallengeStatus.Pending || 
+                                                  currentDate.Date >= StartDate.Date ||
+                                                  currentDate.Date <= EndDate.Date;
 }
 
 public enum ChallengeStatus

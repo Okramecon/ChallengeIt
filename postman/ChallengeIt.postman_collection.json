@@ -35,7 +35,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Username\": \"string\",\r\n    \"Email\": \"string@gmail.com\",\r\n    \"Password\": \"string\"\r\n}",
+							"raw": "{\r\n    \"Username\": \"Malika41\",\r\n    \"Email\": \"\",\r\n    \"Password\": \"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -80,7 +80,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"refreshToken\" : {{refresh_token}}\r\n}",
+							"raw": "{\r\n    \"refreshToken\" : \"{{refresh_token}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -135,7 +135,148 @@
 					"name": "get current user information",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/users/information",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find user by username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/users/find?searchString=malik",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"find"
+							],
+							"query": [
+								{
+									"key": "searchString",
+									"value": "malik"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Challenges",
+			"item": [
+				{
+					"name": "create challenge for current user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');\r",
+									"\r",
+									"pm.environment.set('current_date', moment().utc().format(\"YYYY-MM-DDTHH:mm:ss\"));\r",
+									"\r",
+									"const numberOfDaysToAdd = 21;\r",
+									"const endDate = moment().utc().add(numberOfDaysToAdd, 'days').format(\"YYYY-MM-DDTHH:mm:ss\");\r",
+									"\r",
+									"pm.environment.set('end_date', endDate);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomLoremWords}}\",\r\n    \"startDate\": \"{{current_date}}\",\r\n    \"endDate\": \"{{end_date}}\",\r\n    \"betAmount\": 100,\r\n    \"schedule\": [\r\n        \"2025-01-04\",\r\n        \"2025-01-04\",\r\n        \"2025-01-05\",\r\n        \"2025-01-06\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}api/challenges",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"challenges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update challenge data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"cc61938c-f6c8-4d95-880f-9059dd2f51d6\",\r\n  \"title\": \"{{$randomWords}} changed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}api/challenges",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"challenges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get current user challenges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/challenges/my?pageNumber=1&pageSize=30",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"challenges",
+								"my"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1",
+									"description": "Default value 1"
+								},
+								{
+									"key": "pageSize",
+									"value": "30",
+									"description": "Default value 1000"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -169,6 +310,38 @@
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
+					"if (pm.response.code === 401) {\r",
+					"    // Retry the request after refreshing the token\r",
+					"    pm.sendRequest({\r",
+					"        url: pm.environment.get(\"host\") + \"api/auth/refresh\",\r",
+					"        method: \"POST\",\r",
+					"        header: {\r",
+					"            \"Content-Type\": \"application/json\",\r",
+					"            \"Authorization\": \"Bearer \" + pm.environment.get(\"access_token\")\r",
+					"        },\r",
+					"        body: {\r",
+					"            mode: \"raw\",\r",
+					"            raw: JSON.stringify({\r",
+					"                accessToken: pm.environment.get(\"access_token\"),\r",
+					"                refreshToken: pm.environment.get(\"refresh_token\")\r",
+					"            })\r",
+					"        }\r",
+					"    }, function (err, response) {\r",
+					"        if (!err && response.code === 200) {\r",
+					"            // Parse the new access token and refresh token\r",
+					"\r",
+					"            var jsonData = response.json();\r",
+					"            pm.environment.set(\"access_token\", jsonData.accessToken);\r",
+					"            pm.environment.set(\"refresh_token\", jsonData.refreshToken);\r",
+					"\r",
+					"            postman.setNextRequest(pm.info.requestName);\r",
+					"        } else {\r",
+					"            console.error(\"Failed to refresh token:\", err || response);\r",
+					"        }\r",
+					"    });\r",
+					"} else {\r",
+					"    console.log(\"Request successful, no need to refresh token.\");\r",
+					"}\r",
 					""
 				]
 			}

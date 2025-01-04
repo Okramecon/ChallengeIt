@@ -21,7 +21,7 @@ public sealed class PasswordHasher : IPasswordHasher
 
     public bool Verify(string hashedPassword, string providedPassword)
     {
-        var split = hashedPassword.Split('-');
+            var split = hashedPassword.Split('-');
         var hash = Convert.FromHexString(split[0]);
         var salt = Convert.FromHexString(split[1]);
         

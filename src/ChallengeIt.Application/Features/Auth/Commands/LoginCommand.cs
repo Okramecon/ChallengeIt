@@ -1,7 +1,6 @@
 ﻿using ChallengeIt.Application.Features.Auth.Results;
 using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
-using ChallengeIt.Application.Utils;
 using ChallengeIt.Domain.Entities;
 using MediatR;
 using ErrorOr;
@@ -13,8 +12,7 @@ public record LoginCommand(string Username, string Email, string Password) : IRe
 public class LoginCommandHandler(
     IPasswordHasher passwordHasher,
     IUsersRepository usersRepository,
-    ITokenProvider tokenProvider,
-    IDateTimeProvider dateTimeProvider)
+    ITokenProvider tokenProvider)
     : IRequestHandler<LoginCommand, ErrorOr<LoginResult>>
 {
     public async Task<ErrorOr<LoginResult>> Handle(LoginCommand request, CancellationToken cancellationToken)

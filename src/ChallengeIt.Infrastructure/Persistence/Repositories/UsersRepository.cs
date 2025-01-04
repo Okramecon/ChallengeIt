@@ -1,4 +1,5 @@
-﻿using ChallengeIt.Application.Persistence;
+﻿using System.Data;
+using ChallengeIt.Application.Persistence;
 using ChallengeIt.Domain.Entities;
 using ChallengeIt.Domain.Models.User;
 using ChallengeIt.Infrastructure.Persistence.Dapper;
@@ -6,8 +7,10 @@ using Dapper;
 
 namespace ChallengeIt.Infrastructure.Persistence.Repositories;
 
-public class UsersRepository(IDapperContext context) : IUsersRepository
+public class UsersRepository(ISqlDbContext context) : IUsersRepository
 {
+    private readonly IDbConnection _connection = context.CurrentConnection;
+    
     private const string CreateUserQuery =
         """
         INSERT INTO users (username, email, password_hash, created_at, first_name, last_name, updated_at)
@@ -77,51 +80,42 @@ public class UsersRepository(IDapperContext context) : IUsersRepository
 
     public async Task<long> AddAsync(User user, CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        connection.Open();
-        return await connection.QuerySingleAsync<long>(CreateUserQuery, user);
+        return await _connection.QuerySingleAsync<long>(CreateUserQuery, user);
     }
 
     public async Task<User?> GetByIdAsync(long userId, CancellationToken cancellationToken = default)
-    {
-        using var connection = context.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<User>(GetUserByIdQuery, new { UserId = userId });
+    { 
+        return await _connection.QuerySingleOrDefaultAsync<User>(GetUserByIdQuery, new { UserId = userId });
     }
 
     public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<User>(GetUserByEmailQuery, new { Email = email });
+        return await _connection.QuerySingleOrDefaultAsync<User>(GetUserByEmailQuery, new { Email = email });
     }
 
     public async Task<User?> GetByUserNameAsync(string username, CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<User>(GetUserByUserNameQuery, new { Username = username });
+        return await _connection.QuerySingleOrDefaultAsync<User>(GetUserByUserNameQuery, new { Username = username });
     }
 
     public async Task<bool> ExistsAsync(string userId, CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        return await connection.ExecuteScalarAsync<bool>(CheckExistsByIdQuery, new { UserId = userId });
+        return await _connection.ExecuteScalarAsync<bool>(CheckExistsByIdQuery, new { UserId = userId });
     }
 
     public async Task<bool> IsUsedEmailAsync(string email, CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        return await connection.ExecuteScalarAsync<bool>(CheckUsedEmailQuery, new { Email = email });
+        return await _connection.ExecuteScalarAsync<bool>(CheckUsedEmailQuery, new { Email = email });
     }
 
     public async Task<bool> IsUsedUsernameAsync(string userName, CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        return await connection.ExecuteScalarAsync<bool>(CheckUsedUserNameQuery, new { UserName = userName });
+        return await _connection.ExecuteScalarAsync<bool>(CheckUsedUserNameQuery, new { UserName = userName });
     }
 
     public async Task UpdateRefreshTokenAsync(RefreshToken token, CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(UpsertRefreshTokenQuery, new
+        await _connection.ExecuteAsync(UpsertRefreshTokenQuery, new
         {
             id = token.Id,
             token.Token,
@@ -133,8 +127,7 @@ public class UsersRepository(IDapperContext context) : IUsersRepository
     public async Task<RefreshToken?> GetRefreshTokenAsync(string refreshToken,
         CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<RefreshToken>(GetRefreshTokenQuery,
+        return await _connection.QuerySingleOrDefaultAsync<RefreshToken>(GetRefreshTokenQuery,
             new { RefreshToken = refreshToken });
     }
     
@@ -148,8 +141,7 @@ public class UsersRepository(IDapperContext context) : IUsersRepository
     public async Task<List<SearchUserProfileModel>> FindUsersByNameAsync(string userName,
         CancellationToken cancellationToken = default)
     {
-        using var connection = context.CreateConnection();
-        var profiles = await connection.QueryAsync<SearchUserProfileModel>(FindUserQuery, new { UserName = userName });
+        var profiles = await _connection.QueryAsync<SearchUserProfileModel>(FindUserQuery, new { UserName = userName });
         return profiles.ToList();
     }
 }

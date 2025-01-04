@@ -1,4 +1,5 @@
-﻿using ChallengeIt.Application.Features.Challenges.Commands.CreateChallenge;
+﻿using ChallengeIt.Application.Features.Challenges.Commands.CheckInChallengeDay;
+using ChallengeIt.Application.Features.Challenges.Commands.CreateChallenge;
 using ChallengeIt.Application.Features.Challenges.Commands.UpdateChallenge;
 using ChallengeIt.Application.Features.Challenges.Queries;
 using MediatR;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ChallengeIt.Endpoints;
 
-public static class ChallengeEndpoints
+public static class ChallengesEndpoints
 {
     public static IEndpointRouteBuilder UseChallengeEndpoints(this IEndpointRouteBuilder builder)
     {
@@ -17,6 +18,7 @@ public static class ChallengeEndpoints
         group.MapGet("my", GetCurrentUserChallenges).WithSummary("Gets all challenges belonging to the current user.");
         group.MapPost(string.Empty, CreateChallenge).WithSummary("Creates a new challenge.");
         group.MapPut(string.Empty, UpdateChallenge).WithSummary("Updates existing challenge.");
+        group.MapPatch("{id:guid}/checkin", CheckInChallengeDay).WithSummary("Checkin challenge day.");
         
         return builder;
     }
@@ -28,16 +30,17 @@ public static class ChallengeEndpoints
     {
         var result = await mediator.Send(request, cancellationToken);
         return result.Match(
-            id => Results.Ok(id),
+            response => Results.Ok(response),
             CustomResults.Problem
         ) ;
     }
 
     private static async Task<IResult> UpdateChallenge(
         [FromServices] ISender mediator,
-        [FromBody] UpdateChallengeCommand request)
+        [FromBody] UpdateChallengeCommand request,
+        CancellationToken cancellationToken = default)
     {
-        var result = await mediator.Send(request);
+        var result = await mediator.Send(request, cancellationToken);
         return result.Match(
             _ => Results.NoContent(),
             CustomResults.Problem);
@@ -50,14 +53,29 @@ public static class ChallengeEndpoints
         CancellationToken cancellationToken = default)
     {
         if (pageNumber < 1 || pageSize < 1)
-            Results.BadRequest("Page number and/or page size must be greater than 0.");
+            return Results.BadRequest("Page number and/or page size must be greater than 0.");
         
         var result = await mediator.Send(new GetUserChallengesListQuery()
         {
             PageNumber = pageNumber,
             PageSize = pageSize
-        });
+        }, cancellationToken);
         
         return Results.Ok(result.Value);
+    }
+
+    private static async Task<IResult> CheckInChallengeDay(
+        [FromServices] ISender mediator,
+        [FromRoute] Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        if (id == Guid.Empty)
+            return Results.BadRequest("Id cannot be empty.");
+
+        var result = await mediator.Send(new CheckInChallengeDayCommand(id), cancellationToken);
+        
+        return result.Match(
+            _ => Results.NoContent(),
+            CustomResults.Problem);
     }
 }

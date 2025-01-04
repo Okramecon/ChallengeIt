@@ -1,4 +1,5 @@
-﻿using ChallengeIt.Application.Persistence;
+﻿using ChallengeIt.API.Contracts.Challenges;
+using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
 using ChallengeIt.Domain.Entities;
@@ -9,21 +10,71 @@ namespace ChallengeIt.Application.Features.Challenges.Commands.CreateChallenge;
 
 public class CreateChallengeCommandHandler(
     IDateTimeProvider dateTimeProvider,
-    ICurrentUserProvider currentUserProvider,
-    IChallengesRepository challengesRepository)
-    : IRequestHandler<CreateChallengeCommand, ErrorOr<Guid>>
+    IUnitOfWork unitOfWork,
+    ICurrentUserProvider currentUserProvider)
+    : IRequestHandler<CreateChallengeCommand, ErrorOr<CreateChallengeResponse>>
 {
-    private readonly ICurrentUserProvider _currentUserProvider = currentUserProvider;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IDateTimeProvider _dateTimeProvider = dateTimeProvider;
-    private readonly IChallengesRepository _challengesRepository = challengesRepository;
+    private readonly ICurrentUserProvider _currentUserProvider = currentUserProvider;
     
-    public async Task<ErrorOr<Guid>> Handle(CreateChallengeCommand request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<CreateChallengeResponse>> Handle(CreateChallengeCommand request, CancellationToken cancellationToken)
     {
+        var userId = _currentUserProvider.GetUserId();
+        
         var challenge = request.MapToEntity();
-        challenge.UserId = _currentUserProvider.GetUserId();
+        challenge.UserId = userId;
         challenge.CreatedAt = _dateTimeProvider.UtcNow;
         challenge.Status = ChallengeStatus.New;
 
-        return await _challengesRepository.CreateAsync(challenge, cancellationToken);
+        var checkInDates = request.Schedule.Distinct().ToList();
+        
+        try
+        {
+            _unitOfWork.BeginTransaction();
+
+            // Insert Challenge
+            var challengeId = await _unitOfWork.Challenges.CreateAsync(challenge, null, cancellationToken);
+
+            if (challengeId == Guid.Empty)
+            {
+                _unitOfWork.Rollback();
+                return Error.Unexpected("Error creating challenge.");
+            }
+
+            // Insert Check-Ins
+            var checkIns = CreateCheckIns(challengeId, userId, checkInDates).ToList();
+            
+            var createdCheckIns = await _unitOfWork.CheckIns.CreateBatchAsync(checkIns, cancellationToken);
+                
+            _unitOfWork.Commit();
+
+            return new CreateChallengeResponse(
+                challengeId,
+                challenge.Title,
+                createdCheckIns.Select(x => new CreateCheckInModel(
+                    x.Id,
+                    x.Date)).ToList()
+                );
+        }
+        catch (Exception ex)
+        {
+            _unitOfWork.Rollback();
+            return Error.Unexpected($"Transaction failed: {ex.Message}");
+        }
+        finally
+        {
+            _unitOfWork.ConnectionClose();
+        }
     }
+
+    private static IEnumerable<CheckIn> CreateCheckIns(Guid challengeId, long userId, List<DateTime> dates)
+        => dates.Distinct().Select(d => new CheckIn
+        {
+            Id = Guid.NewGuid(),
+            ChallengeId = challengeId,
+            UserId = userId,
+            Date = d,
+            Checked = false
+        });
 }

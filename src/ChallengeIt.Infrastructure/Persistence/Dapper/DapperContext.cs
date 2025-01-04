@@ -4,27 +4,62 @@ using Npgsql;
 
 namespace ChallengeIt.Infrastructure.Persistence.Dapper;
 
-public class DapperContext : IDapperContext
+/// <summary>
+/// Unit of work Dapper implementation
+/// </summary>
+public class DapperContext : ISqlDbContext
 {
-    private readonly string _connectionString;
-
     public DapperContext(DapperContextOptions options)
     {
         if (options is null || string.IsNullOrWhiteSpace(options.ConnectionString))
             throw new ArgumentNullException(nameof(options.ConnectionString));
         
-        _connectionString = options.ConnectionString;
         DefaultTypeMap.MatchNamesWithUnderscores = true;
-    }
-     
-    public IDbConnection CreateConnection() => new NpgsqlConnection(_connectionString);
-    public IDbConnection CreateConnection(string connectionString) => new NpgsqlConnection(connectionString);
 
-    public IDbTransaction CreateTransaction()
+        CurrentConnection = new NpgsqlConnection(options.ConnectionString);
+    }
+
+    public IDbConnection CurrentConnection { get; private set; }
+    public IDbTransaction? CurrentTransaction { get; private set; }
+    
+    public IDbTransaction BeginTransaction()
     {
-        var connection = CreateConnection();
-        connection.Open();
-        return connection.BeginTransaction();
+        if (CurrentConnection.State != ConnectionState.Open)
+        {
+            CurrentConnection.Open();
+        }
+        
+        return CurrentTransaction = CurrentConnection.BeginTransaction();
+    }
+    
+    public IDbTransaction BeginTransaction(IsolationLevel isolationLevel)
+    {
+        if (CurrentConnection.State != ConnectionState.Open)
+        {
+            CurrentConnection.Open();
+        }
+        
+        return CurrentTransaction = CurrentConnection.BeginTransaction(isolationLevel);
     }
 
+    public void ConnectionOpen()
+    {
+        if (CurrentConnection.State != ConnectionState.Open)
+            CurrentConnection.Open();
+    } 
+    
+    public void ConnectionClose()
+    {
+        if (CurrentConnection.State != ConnectionState.Closed)
+            CurrentConnection.Close();
+    }
+    
+    public void Dispose()
+    {
+        if (CurrentConnection.State == ConnectionState.Open)
+        {
+            CurrentConnection.Close();
+        }
+        CurrentConnection.Dispose();
+    }
 }

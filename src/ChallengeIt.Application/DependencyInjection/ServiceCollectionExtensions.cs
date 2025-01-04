@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using ChallengeIt.Application.Features.Common.Behaviors;
+﻿using ChallengeIt.Application.Features.Common.Behaviors;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ChallengeIt.Application.DependencyInjection;
@@ -15,6 +15,7 @@ public static class ServiceCollectionExtensions
             options.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
         
+        services.AddValidatorsFromAssemblyContaining(typeof(ServiceCollectionExtensions));
         return services;
     }
 }
