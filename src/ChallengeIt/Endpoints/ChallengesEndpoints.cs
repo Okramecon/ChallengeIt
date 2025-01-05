@@ -18,7 +18,7 @@ public static class ChallengesEndpoints
         group.MapGet("my", GetCurrentUserChallenges).WithSummary("Gets all challenges belonging to the current user.");
         group.MapPost(string.Empty, CreateChallenge).WithSummary("Creates a new challenge.");
         group.MapPut(string.Empty, UpdateChallenge).WithSummary("Updates existing challenge.");
-        group.MapPatch("{id:guid}/checkin", CheckInChallengeDay).WithSummary("Checkin challenge day.");
+        group.MapPatch("checkin", CheckInChallengeDay).WithSummary("Checkin challenge day.");
         
         return builder;
     }
@@ -66,14 +66,18 @@ public static class ChallengesEndpoints
 
     private static async Task<IResult> CheckInChallengeDay(
         [FromServices] ISender mediator,
-        [FromRoute] Guid id,
+        [FromQuery] Guid? challengeId,
+        [FromQuery] Guid? checkInId,
         CancellationToken cancellationToken = default)
     {
-        if (id == Guid.Empty)
-            return Results.BadRequest("Id cannot be empty.");
+        if (!challengeId.HasValue && !checkInId.HasValue)
+        {
+            return Results.BadRequest("At least one of ChallengeId or CheckInId must be provided.");
+        }
 
-        var result = await mediator.Send(new CheckInChallengeDayCommand(id), cancellationToken);
-        
+        var command = new CheckInChallengeDayCommand(ChallengeId: challengeId, CheckInId: checkInId);
+        var result = await mediator.Send(command, cancellationToken);
+
         return result.Match(
             _ => Results.NoContent(),
             CustomResults.Problem);

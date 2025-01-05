@@ -1,7 +1,6 @@
 ﻿using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
-using ChallengeIt.Domain.Entities;
 using ChallengeIt.Domain.Errors;
 using ErrorOr;
 using MediatR;
@@ -15,44 +14,85 @@ public class CheckInChallengeDayCommandHandler(
     IDateTimeProvider dateTimeProvider)
     : IRequestHandler<CheckInChallengeDayCommand, ErrorOr<Success>>
 {
-    private readonly IChallengesRepository _challengesRepository = challengesRepository;
-    private readonly ICheckInsRepository _checkInsRepository = checkInsRepository;
-    private readonly ICurrentUserProvider _userProvider = userProvider;
-    private readonly IDateTimeProvider _dateTimeProvider = dateTimeProvider;
-
     public async Task<ErrorOr<Success>> Handle(CheckInChallengeDayCommand request, CancellationToken cancellationToken)
     {
-        var userId = _userProvider.GetUserId();
-        
-        var challenge = await _challengesRepository.GetByIdAsync(request.ChallengeId, cancellationToken);
-        
-        if (challenge is null)
-            return Error.NotFound(description: ApplicationErrors.ResourceNotFound);
-        
-        if (challenge.UserId != userId)
-            return Error.Forbidden("You are not authorized to check in this challenge.");
-        
-        var currentDate = _dateTimeProvider.UtcNow;
-
-        if (!challenge.IsActive(currentDate))
-            return Error.Conflict("Challenge is not active.");
-        
-        var checkInDateEntity = await _checkInsRepository.GetChallengeCheckInAsync(request.ChallengeId, currentDate, cancellationToken);
-        if (checkInDateEntity is null)
+        try
         {
-            checkInDateEntity = new CheckIn
+            if (request.CheckInId.HasValue)
             {
-                Checked = true,
-                UserId = userId,
-                ChallengeId = request.ChallengeId,
-                Date = currentDate,
-            };
-            
-            await _checkInsRepository.CreateAsync(checkInDateEntity, null, cancellationToken);
-            return Result.Success;
+                return await CheckInWithCheckInIdAsync(request.CheckInId.Value, cancellationToken);
+            }
+
+            if (request.ChallengeId.HasValue)
+            {
+                return await CheckInWithChallengeIdAsync(request.ChallengeId.Value, cancellationToken);
+            }
+
+            return Error.Validation("Invalid request", "Either CheckInId or ChallengeId must be provided.");
         }
-        
-        await _checkInsRepository.CheckInChallengeDate(checkInDateEntity.Id, cancellationToken);
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return Error.Failure(description: "Error occured while update check-in day.");
+        }
+    }
+
+    private async Task<ErrorOr<Success>> CheckInWithChallengeIdAsync(Guid challengeId, CancellationToken cancellationToken)
+    {
+        var challenge = await challengesRepository.GetByIdAsync(challengeId, cancellationToken);
+        if (challenge is null)
+        {
+            return Error.NotFound(description: ApplicationErrors.ResourceNotFound);
+        }
+
+        var userId = userProvider.GetUserId();
+        if (challenge.UserId != userId)
+        {
+            return Error.Forbidden(description: "You are not authorized to check in this challenge.");
+        }
+
+        var currentDate = dateTimeProvider.UtcNow.Date;
+        if (!challenge.IsActive(currentDate))
+        {
+            return Error.Conflict(description: "Challenge is not active.");
+        }
+
+        var checkInEntity = await checkInsRepository.GetChallengeCheckInAsync(challengeId, currentDate, cancellationToken);
+        if (checkInEntity is null)
+        {
+            return Error.NotFound(description: ApplicationErrors.ResourceNotFound);
+        }
+
+        await checkInsRepository.CheckInChallengeDate(checkInEntity.Id, cancellationToken);
+        return Result.Success;
+    }
+
+    /// <summary>
+    /// Only in case when challenge is active
+    /// </summary>
+    /// <param name="checkInId">Check in identifier</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>Error or Success</returns>
+    private async Task<ErrorOr<Success>> CheckInWithCheckInIdAsync(Guid checkInId, CancellationToken cancellationToken)
+    {
+        var checkInEntity = await checkInsRepository.GetByIdAsync(checkInId, cancellationToken);
+        if (checkInEntity is null)
+        {
+            return Error.NotFound(description: ApplicationErrors.ResourceNotFound);
+        }
+
+        var userId = userProvider.GetUserId();
+        if (checkInEntity.UserId != userId)
+        {
+            return Error.Forbidden(description: "You are not authorized to check in this challenge.");
+        }
+
+        if (checkInEntity.Date != dateTimeProvider.UtcNow.Date)
+        {
+            return Error.Conflict(description : "You cannot check in this date.");
+        }
+
+        await checkInsRepository.CheckInChallengeDate(checkInId, cancellationToken);
         return Result.Success;
     }
 }
