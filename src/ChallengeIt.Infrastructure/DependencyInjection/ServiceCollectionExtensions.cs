@@ -2,6 +2,7 @@
 using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
+using ChallengeIt.Domain.Errors;
 using ChallengeIt.Infrastructure.Persistence.Dapper;
 using ChallengeIt.Infrastructure.Persistence.Repositories;
 using ChallengeIt.Infrastructure.Security.CurrentUserProvider;
@@ -10,6 +11,7 @@ using ChallengeIt.Infrastructure.Security.TokenGenerator;
 using ChallengeIt.Infrastructure.Security.TokenValidation;
 using ChallengeIt.Infrastructure.Utils;
 using Dapper;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -62,12 +64,17 @@ public static class ServiceCollectionExtensions
         services.AddOptions<JwtSettings>()
             .Bind(configuration.GetSection(nameof(JwtSettings)))
             .ValidateOnStart();
-
+        
         services.AddSingleton<ITokenProvider, TokenProvider>();
         
         services
             .ConfigureOptions<JwtBearerTokenValidationConfiguration>()
             .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer();
+            .AddJwtBearer()
+            .AddGoogle(options =>
+            {
+                options.ClientId = configuration["Google:ClientId"] ?? throw new NullReferenceException(ApplicationErrors.MissingApplicationConfig + nameof(GoogleOptions.ClientId));
+                options.ClientSecret = configuration["Google:ClientSecret"]?? throw new NullReferenceException(ApplicationErrors.MissingApplicationConfig + nameof(GoogleOptions.ClientSecret));
+            });
     }
 }
