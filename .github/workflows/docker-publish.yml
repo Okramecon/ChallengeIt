@@ -1,40 +1,35 @@
 name: Deploy to Digital Ocean VPS
-
-on:
+'on':
   push:
     branches:
       - build_dev
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up SSH key
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.VPS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.VPS_IP }} | sort -u >> ~/.ssh/known_hosts
-
-    - name: Deploy to Digital Ocean VPS
-      run: |
-        ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_SSH_USER }}@${{ secrets.VPS_IP }} << 'EOF'
-          set -e
-          if [ ! -d "/opt/challengeitapi/.git" ]; then
-            git clone git@github.com:Okramecon/ChallengeIt.git /opt/challengeitapi
-          else
-            echo "Repository already exists. Pulling latest changes..."
-          fi
-          cd /opt/challengeitapi
-          git pull origin master
-	  cd /opt/challengeitapi/src/ChallengeIt
-          docker-compose down
-          docker-compose build
-          docker-compose up -d --remove-orphans
-          docker system prune -f
-        EOF
-
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.VPS_IP }} | sort -u >> ~/.ssh/known_hosts
+      - name: Deploy to Digital Ocean VPS
+        run: >
+          ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_SSH_USER }}@${{ secrets.VPS_IP }}
+          << 'EOF'
+            set -e
+            if [ ! -d "/opt/challengeitapi/.git" ]; then
+              git clone git@github.com:Okramecon/ChallengeIt.git /opt/challengeitapi
+            else
+              echo "Repository already exists. Pulling latest changes..."
+            fi
+            cd /opt/challengeitapi
+            git pull origin master
+            cd /opt/challengeitapi/src/ChallengeIt
+            docker-compose down
+            docker-compose build
+            docker-compose up -d --remove-orphans
+            docker system prune -f
+          EOF
