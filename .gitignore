@@ -39,3 +39,6 @@ Desktop.ini
 .DS_Store
 
 **/appsettings.*.json
+
+*.env
+**/*.env
