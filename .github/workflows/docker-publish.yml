@@ -24,7 +24,11 @@ jobs:
       run: |
         ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_SSH_USER }}@${{ secrets.VPS_IP }} << 'EOF'
           set -e
-          git clone git@github.com:Okramecon/ChallengeIt.git /opt/challengeitapi
+          if [ ! -d "/opt/challengeitapi/.git" ]; then
+            git clone git@github.com:Okramecon/ChallengeIt.git /opt/challengeitapi
+          else
+            echo "Repository already exists. Pulling latest changes..."
+          fi
           cd /opt/challengeitapi
           git pull origin master
           docker-compose down
@@ -32,3 +36,4 @@ jobs:
           docker-compose up -d --remove-orphans
           docker system prune -f
         EOF
+
