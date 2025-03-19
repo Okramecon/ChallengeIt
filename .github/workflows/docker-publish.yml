@@ -31,6 +31,7 @@ jobs:
           fi
           cd /opt/challengeitapi
           git pull origin master
+	  cd /opt/challengeitapi/src/ChallengeIt
           docker-compose down
           docker-compose build
           docker-compose up -d --remove-orphans
