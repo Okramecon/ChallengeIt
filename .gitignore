@@ -42,4 +42,4 @@ Desktop.ini
 
 .env
 *.env
-**/*.env
+**/.env
