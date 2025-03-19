@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: yourappimage:latest
+    container_name: yourapp_container
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=${DB_HOST};Port=${DB_PORT};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};Database=${POSTGRES_DB}
+    ports:
+      - "80:80"
+    depends_on:
+      - database
+    restart: always
+    env_file:
+    - .env
+
+  database:
+    image: postgres:13
+    container_name: postgres_container
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
+    driver: local
