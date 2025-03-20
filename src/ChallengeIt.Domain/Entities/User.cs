@@ -12,8 +12,11 @@ public class User : Entity<long>, ITrackable
     public required string Email { get; init; }
     
     [Column("password_hash")]
-    public required string PasswordHash { get; init; }
-    
+    public string? PasswordHash { get; init; }
+
+    [Column("is_external")]
+    public bool IsExternal { get; init; } = false;
+
     [Column("first_name")]
     public string? FirstName { get; init; }
     

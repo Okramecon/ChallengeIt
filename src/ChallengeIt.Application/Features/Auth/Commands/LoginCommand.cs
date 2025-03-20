@@ -37,7 +37,10 @@ public class LoginCommandHandler(
         if (user is null)
             return Error.Validation("Login", "Login model has to provide username or email");
         
-        if (!passwordHasher.Verify(user.PasswordHash, request.Password))
+        if (user.IsExternal)
+            return Error.Unauthorized("Login", "User is external and cannot login with password");
+
+        if (!passwordHasher.Verify(user.PasswordHash!, request.Password))
             return Error.Unauthorized("Login","Invalid credentials");
         
         var accessToken = tokenProvider.GenerateJwtToken(user.Id, user.Username, user.Email);
@@ -50,8 +53,6 @@ public class LoginCommandHandler(
             Token = refreshTokenValue,
             ExpiresAt = refreshExpiresAt
         };
-
-        
 
         await usersRepository.UpdateRefreshTokenAsync(refreshToken, cancellationToken);
         

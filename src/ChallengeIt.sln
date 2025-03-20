@@ -2,11 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeIt", "ChallengeIt\ChallengeIt.csproj", "{E929648C-86CD-4F5E-9924-78339BDF5DD4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CD5A06D6-13AA-45C2-8CE9-4BFC4EA5BDB4}"
-	ProjectSection(SolutionItems) = preProject
-		compose.yaml = compose.yaml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EBEB6CF3-ACA8-4D37-8FCB-0204AB5C1D2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeIt.Domain", "ChallengeIt.Domain\ChallengeIt.Domain.csproj", "{44AE1796-0163-45F8-8DE1-67EC06803B15}"

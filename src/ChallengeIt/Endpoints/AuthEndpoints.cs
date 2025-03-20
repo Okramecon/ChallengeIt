@@ -1,7 +1,5 @@
 ﻿using ChallengeIt.API.Contracts.Auth;
-using ChallengeIt.API.Contracts.Users;
 using ChallengeIt.Application.Features.Auth.Commands;
-using ChallengeIt.Application.Features.Users.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,42 +15,57 @@ public static class AuthEndpoints
 
         group.MapPost(string.Empty, LoginWithCredentials).WithSummary("Creates a new user");
         group.MapPost("refresh", LoginWithRefreshToken).WithSummary("Refreshes the user token").RequireAuthorization();
+        group.MapPost("google", SignInWithGoogle).WithSummary("Sign in with Google");
         return builder;
     }
 
     private static async Task<IResult> LoginWithCredentials(
         [FromServices] ISender mediator,
-        [FromBody] LoginRequest request,
+        [FromBody] SignInRequest.Login request,
         CancellationToken cancellationToken = default)
     {
         var command = new LoginCommand(
             request.Username,
-            request.Email, 
+            request.Email,
             request.Password
         );
-        
+
         var result = await mediator.Send(command, cancellationToken);
         return result.Match(
             loginResult => Results.Ok(
                 new LoginResponse(loginResult.AccessToken, loginResult.RefreshToken)
             ),
             CustomResults.Problem
-        ) ;
+        );
     }
-    
+
     private static async Task<IResult> LoginWithRefreshToken(
         [FromServices] ISender mediator,
-        [FromBody] LoginWithRefreshRequest request,
+        [FromBody] SignInRequest.Refresh request,
         CancellationToken cancellationToken = default)
     {
         var command = new LoginWIthRefreshTokenCommand(request.RefreshToken);
-        
+
         var result = await mediator.Send(command, cancellationToken);
         return result.Match(
             loginResult => Results.Ok(
                 new LoginResponse(loginResult.AccessToken, loginResult.RefreshToken)
             ),
             CustomResults.Problem
-        ) ;
+        );
+    }
+
+    private static async Task<IResult> SignInWithGoogle(
+        [FromServices] ISender mediator,
+        [FromBody] SignInRequest.Google request,
+        CancellationToken cancellationToken = default)
+    {
+        var command = new SignInWithGoogleCommand(request.IdToken);
+
+        var result = await mediator.Send(command, cancellationToken);
+        return result.Match(
+            principal => Results.Ok(),
+            CustomResults.Problem
+        );
     }
 }

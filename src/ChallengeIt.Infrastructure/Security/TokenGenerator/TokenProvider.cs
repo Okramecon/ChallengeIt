@@ -16,9 +16,6 @@ public class TokenProvider(IOptions<JwtSettings> jwtSettings, IDateTimeProvider 
     
     public string GenerateJwtToken(long id, string email, string username)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
-        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
         var claims = new List<Claim>
         {
             new(JwtRegisteredClaimNames.UniqueName, username),
@@ -26,10 +23,18 @@ public class TokenProvider(IOptions<JwtSettings> jwtSettings, IDateTimeProvider 
             new("id", id.ToString()),
         };
 
+        return GenerateJwtToken(claims);
+    }
+
+    public string GenerateJwtToken(IEnumerable<Claim> claims)
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
         var token = new JwtSecurityToken(
             _jwtSettings.Issuer,
             _jwtSettings.Audience,
-            claims,
+            claims: claims,
             expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.AccessTokenExpirationInMinutes),
             signingCredentials: credentials);
 
