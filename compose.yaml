@@ -1,6 +1,0 @@
-﻿services:
-  challengeit:
-    image: challengeit
-    build:
-      context: .
-      dockerfile: ChallengeIt/Dockerfile

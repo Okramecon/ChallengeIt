@@ -3,15 +3,16 @@ version: '3.8'
 services:
   webapi:
     build:
-      context: .
+      context: ./src
       dockerfile: Dockerfile
-    image: yourappimage:latest
-    container_name: yourapp_container
+    image: challengeit-image:latest
+    container_name: challengeit_api_container
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__DefaultConnection=Host=${DB_HOST};Port=${DB_PORT};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};Database=${POSTGRES_DB}
     ports:
-      - "80:80"
+      - "5000:8080"
+      - "5001:8081"
     depends_on:
       - database
     restart: always
