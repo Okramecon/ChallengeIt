@@ -22,7 +22,7 @@ public static class ServiceCollectionExtensions
 
         // Settigns
         services.AddOptions<GoogleSettings>()
-            .Bind(configuration.GetSection(nameof(GoogleSettings)))
+            .Bind(configuration.GetSection("Google"))
             .ValidateOnStart();
 
         return services;
