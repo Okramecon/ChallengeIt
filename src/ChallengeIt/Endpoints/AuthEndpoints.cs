@@ -25,8 +25,7 @@ public static class AuthEndpoints
         CancellationToken cancellationToken = default)
     {
         var command = new LoginCommand(
-            request.Username,
-            request.Email,
+            request.UsernameOrEmail,
             request.Password
         );
 
@@ -35,7 +34,7 @@ public static class AuthEndpoints
             loginResult => Results.Ok(
                 new LoginResponse(loginResult.AccessToken, loginResult.RefreshToken)
             ),
-            CustomResults.Problem
+            errors => errors.Problem()
         );
     }
 
@@ -51,7 +50,7 @@ public static class AuthEndpoints
             loginResult => Results.Ok(
                 new LoginResponse(loginResult.AccessToken, loginResult.RefreshToken)
             ),
-            CustomResults.Problem
+            errors => errors.Problem()
         );
     }
 
@@ -65,7 +64,7 @@ public static class AuthEndpoints
         var result = await mediator.Send(command, cancellationToken);
         return result.Match(
             principal => Results.Ok(),
-            CustomResults.Problem
+            errors => errors.Problem()
         );
     }
 }

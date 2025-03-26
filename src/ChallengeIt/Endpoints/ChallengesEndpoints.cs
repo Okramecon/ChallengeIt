@@ -31,8 +31,8 @@ public static class ChallengesEndpoints
         var result = await mediator.Send(request, cancellationToken);
         return result.Match(
             response => Results.Ok(response),
-            CustomResults.Problem
-        ) ;
+            errors => errors.Problem()
+        );
     }
 
     private static async Task<IResult> UpdateChallenge(
@@ -43,7 +43,7 @@ public static class ChallengesEndpoints
         var result = await mediator.Send(request, cancellationToken);
         return result.Match(
             _ => Results.NoContent(),
-            CustomResults.Problem);
+            errors => errors.Problem());
     }
 
     private static async Task<IResult> GetCurrentUserChallenges(
@@ -80,6 +80,6 @@ public static class ChallengesEndpoints
 
         return result.Match(
             _ => Results.NoContent(),
-            CustomResults.Problem);
+            errors => errors.Problem());
     }
 }

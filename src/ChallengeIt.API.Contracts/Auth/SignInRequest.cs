@@ -1,11 +1,13 @@
-﻿namespace ChallengeIt.API.Contracts.Auth
+﻿using System.Text.Json.Serialization;
+
+namespace ChallengeIt.API.Contracts.Auth
 {
     public class SignInRequest
     {
         public class Login
         {
-            public required string Username { get; set; }
-            public required string Email { get; set; }
+            [JsonPropertyName("login")]
+            public required string UsernameOrEmail { get; set; }
             public required string Password { get; set; }
         }
 

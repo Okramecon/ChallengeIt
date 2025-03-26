@@ -9,6 +9,7 @@ public interface IUsersRepository
     Task<User?> GetByIdAsync(long userId, CancellationToken cancellationToken = default);
     Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
     Task<User?> GetByUserNameAsync(string userName, CancellationToken cancellationToken = default);
+    Task<User?> GetByLoginAsync(string login, CancellationToken cancellationToken = default);
     Task<bool> ExistsAsync(string userId, CancellationToken cancellationToken = default);
     Task<bool> IsUsedEmailAsync(string email, CancellationToken cancellationToken = default);
     Task<bool> IsUsedUsernameAsync(string userName, CancellationToken cancellationToken = default);

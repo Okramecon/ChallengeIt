@@ -10,7 +10,7 @@ namespace ChallengeIt.Infrastructure.Persistence.Repositories;
 public class UsersRepository(ISqlDbContext context) : IUsersRepository
 {
     private readonly IDbConnection _connection = context.CurrentConnection;
-    
+
     private const string CreateUserQuery =
         """
         INSERT INTO users (username, email, password_hash, created_at, first_name, last_name, updated_at)
@@ -37,6 +37,13 @@ public class UsersRepository(ISqlDbContext context) : IUsersRepository
         SELECT id, username, email, password_hash, first_name, last_name
         FROM users 
         WHERE UserName = @Username;
+        """;
+
+    private const string GetByLoginQuery =
+        """
+        SELECT id, username, email, password_hash, first_name, last_name
+        FROM users 
+        WHERE username = @Username OR email = @Email;
         """;
 
     private const string CheckExistsByIdQuery =
@@ -79,50 +86,37 @@ public class UsersRepository(ISqlDbContext context) : IUsersRepository
         """;
 
     public async Task<long> AddAsync(User user, CancellationToken cancellationToken = default)
-    {
-        return await _connection.QuerySingleAsync<long>(CreateUserQuery, user);
-    }
+        => await _connection.QuerySingleAsync<long>(CreateUserQuery, user);
 
     public async Task<User?> GetByIdAsync(long userId, CancellationToken cancellationToken = default)
-    { 
-        return await _connection.QuerySingleOrDefaultAsync<User>(GetUserByIdQuery, new { UserId = userId });
-    }
+        => await _connection.QuerySingleOrDefaultAsync<User>(GetUserByIdQuery, new { UserId = userId });
 
     public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
-    {
-        return await _connection.QuerySingleOrDefaultAsync<User>(GetUserByEmailQuery, new { Email = email });
-    }
+        => await _connection.QuerySingleOrDefaultAsync<User>(GetUserByEmailQuery, new { Email = email });
 
     public async Task<User?> GetByUserNameAsync(string username, CancellationToken cancellationToken = default)
-    {
-        return await _connection.QuerySingleOrDefaultAsync<User>(GetUserByUserNameQuery, new { Username = username });
-    }
+        => await _connection.QuerySingleOrDefaultAsync<User>(GetUserByUserNameQuery, new { Username = username });
+
+    public async Task<User?> GetByLoginAsync(string login, CancellationToken cancellationToken = default)
+        => await _connection.QuerySingleOrDefaultAsync<User>(GetByLoginQuery, new { Username = login, Email = login });
 
     public async Task<bool> ExistsAsync(string userId, CancellationToken cancellationToken = default)
-    {
-        return await _connection.ExecuteScalarAsync<bool>(CheckExistsByIdQuery, new { UserId = userId });
-    }
+        => await _connection.ExecuteScalarAsync<bool>(CheckExistsByIdQuery, new { UserId = userId });
 
     public async Task<bool> IsUsedEmailAsync(string email, CancellationToken cancellationToken = default)
-    {
-        return await _connection.ExecuteScalarAsync<bool>(CheckUsedEmailQuery, new { Email = email });
-    }
+        => await _connection.ExecuteScalarAsync<bool>(CheckUsedEmailQuery, new { Email = email });
 
     public async Task<bool> IsUsedUsernameAsync(string userName, CancellationToken cancellationToken = default)
-    {
-        return await _connection.ExecuteScalarAsync<bool>(CheckUsedUserNameQuery, new { UserName = userName });
-    }
+        => await _connection.ExecuteScalarAsync<bool>(CheckUsedUserNameQuery, new { UserName = userName });
 
     public async Task UpdateRefreshTokenAsync(RefreshToken token, CancellationToken cancellationToken = default)
-    {
-        await _connection.ExecuteAsync(UpsertRefreshTokenQuery, new
+        => await _connection.ExecuteAsync(UpsertRefreshTokenQuery, new
         {
             id = token.Id,
             token.Token,
             token.ExpiresAt,
             token.UserId,
         });
-    }
 
     public async Task<RefreshToken?> GetRefreshTokenAsync(string refreshToken,
         CancellationToken cancellationToken = default)
@@ -130,18 +124,18 @@ public class UsersRepository(ISqlDbContext context) : IUsersRepository
         return await _connection.QuerySingleOrDefaultAsync<RefreshToken>(GetRefreshTokenQuery,
             new { RefreshToken = refreshToken });
     }
-    
+
     public const string FindUserQuery =
         """
         SELECT id, username, first_name, last_name
         FROM users 
         WHERE Lower(username) LIKE '%' || Lower(@UserName) || '%';;
         """;
-    
+
     public async Task<List<SearchUserProfileModel>> FindUsersByNameAsync(string userName,
         CancellationToken cancellationToken = default)
     {
         var profiles = await _connection.QueryAsync<SearchUserProfileModel>(FindUserQuery, new { UserName = userName });
-        return profiles.ToList();
+        return [.. profiles];
     }
 }

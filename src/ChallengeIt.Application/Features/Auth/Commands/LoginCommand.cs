@@ -2,12 +2,12 @@
 using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Domain.Entities;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
 namespace ChallengeIt.Application.Features.Auth.Commands;
 
-public record LoginCommand(string Username, string Email, string Password) : IRequest<ErrorOr<LoginResult>>;
+public record LoginCommand(string Login, string Password) : IRequest<ErrorOr<LoginResult>>;
 
 public class LoginCommandHandler(
     IPasswordHasher passwordHasher,
@@ -17,35 +17,24 @@ public class LoginCommandHandler(
 {
     public async Task<ErrorOr<LoginResult>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        User? user = null;
-        
-        if (!string.IsNullOrEmpty(request.Username))
-        {
-            user = await usersRepository.GetByUserNameAsync(request.Username, cancellationToken);
-            
-            if (user is null)
-                return Error.NotFound($"User {request.Email} was not found");
-        }
-        else if (!string.IsNullOrEmpty(request.Email))
-        {
-            user = await usersRepository.GetByEmailAsync(request.Email, cancellationToken);
-            
-            if (user is null)
-                return Error.NotFound($"User {request.Email} was not found");
-        }
+        if (string.IsNullOrEmpty(request.Login) && string.IsNullOrEmpty(request.Password))
+            return Errors.LoginDataIsEmpty;
+
+        User? user = await usersRepository.GetByUserNameAsync(request.Login, cancellationToken) 
+            ?? await usersRepository.GetByEmailAsync(request.Login, cancellationToken);
 
         if (user is null)
-            return Error.Validation("Login", "Login model has to provide username or email");
-        
+            return Errors.UserNotFound;
+
         if (user.IsExternal)
-            return Error.Unauthorized("Login", "User is external and cannot login with password");
+            return Errors.ExternalUserLogin;
 
         if (!passwordHasher.Verify(user.PasswordHash!, request.Password))
-            return Error.Unauthorized("Login","Invalid credentials");
-        
+            return Errors.InvalidCredentials;
+
         var accessToken = tokenProvider.GenerateJwtToken(user.Id, user.Username, user.Email);
-        var (refreshTokenValue, refreshExpiresAt) = tokenProvider.GenerateRefreshToken(); 
-        
+        var (refreshTokenValue, refreshExpiresAt) = tokenProvider.GenerateRefreshToken();
+
         var refreshToken = new RefreshToken()
         {
             Id = Guid.NewGuid(),
@@ -55,7 +44,32 @@ public class LoginCommandHandler(
         };
 
         await usersRepository.UpdateRefreshTokenAsync(refreshToken, cancellationToken);
-        
+
         return new LoginResult(accessToken, refreshToken.Token);
+    }
+
+    public static class Errors
+    {
+        public const string Code = "Auth.Login";
+
+        public static Error UserNotFound => Error.NotFound(
+            code: Code,
+            description: "User was not found");
+
+        public static Error LoginDataIsEmpty => Error.Validation(
+            code: Code,
+            description: "Login model has to provide username or email");
+
+        public static Error ExternalUserLogin => Error.Validation(
+            code: Code,
+            description: "User is external and cannot login with password. Try login with SSO.");
+
+        public static Error NotFound => Error.NotFound(
+            code: Code,
+            description: "Breakfast not found");
+
+        public static Error InvalidCredentials => Error.Unauthorized(
+            code: Code,
+            description: "Invalid credentials");
     }
 }

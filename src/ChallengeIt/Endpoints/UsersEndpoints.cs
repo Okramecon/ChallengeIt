@@ -39,7 +39,7 @@ public static class UsersEndpoints
         var result = await mediator.Send(command, cancellationToken);
         return result.Match(
             user => Results.Ok(user.UserId),
-            CustomResults.Problem
+            errors => errors.Problem()
         ) ;
     }
 
@@ -52,7 +52,7 @@ public static class UsersEndpoints
         var result = await mediator.Send(new GetUserInformationQuery(userId));
         return result.Match(
             userInfo => Results.Ok(userInfo),
-            CustomResults.Problem
+            errors => errors.Problem()
         );
     }
     
