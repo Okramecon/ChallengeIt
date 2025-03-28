@@ -71,7 +71,7 @@ public class UsersRepository(ISqlDbContext context) : IUsersRepository
         """
         INSERT INTO refreshtokens (id, token, expires_at, user_id)
         VALUES (@Id, @Token, @ExpiresAt, @UserId)
-        ON CONFLICT (id, user_id) 
+        ON CONFLICT (id) 
         DO UPDATE SET 
             token = EXCLUDED.token,
             expires_at = EXCLUDED.expires_at;
