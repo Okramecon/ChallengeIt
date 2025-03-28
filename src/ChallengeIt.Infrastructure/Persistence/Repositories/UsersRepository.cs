@@ -71,11 +71,10 @@ public class UsersRepository(ISqlDbContext context) : IUsersRepository
         """
         INSERT INTO refreshtokens (id, token, expires_at, user_id)
         VALUES (@Id, @Token, @ExpiresAt, @UserId)
-        ON CONFLICT (id) 
+        ON CONFLICT (id, user_id) 
         DO UPDATE SET 
             token = EXCLUDED.token,
-            expires_at = EXCLUDED.expires_at,
-            user_id = EXCLUDED.user_id;
+            expires_at = EXCLUDED.expires_at;
         """;
 
     private const string GetRefreshTokenQuery =
