@@ -32,19 +32,20 @@ public class LoginCommandHandler(
         if (!passwordHasher.Verify(user.PasswordHash!, request.Password))
             return Errors.InvalidCredentials;
 
-        var accessToken = tokenProvider.GenerateJwtToken(user.Id, user.Username, user.Email);
         var (refreshTokenValue, refreshExpiresAt) = tokenProvider.GenerateRefreshToken();
 
-        var refreshToken = new RefreshToken()
+        var refreshToken = await usersRepository.GetRefreshTokenAsync(user.Id, cancellationToken) ?? new RefreshToken()
         {
             Id = Guid.NewGuid(),
             UserId = user.Id,
-            Token = refreshTokenValue,
-            ExpiresAt = refreshExpiresAt
+            Token = ""
         };
+        refreshToken.ExpiresAt = refreshExpiresAt;
+        refreshToken.Token = refreshTokenValue;
 
         await usersRepository.UpdateRefreshTokenAsync(refreshToken, cancellationToken);
 
+        var accessToken = tokenProvider.GenerateJwtToken(user.Id, user.Username, user.Email, refreshToken.Id);
         return new LoginResult(accessToken, refreshToken.Token);
     }
 

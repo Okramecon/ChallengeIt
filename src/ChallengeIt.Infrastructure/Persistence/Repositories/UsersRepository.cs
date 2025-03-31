@@ -84,6 +84,13 @@ public class UsersRepository(ISqlDbContext context) : IUsersRepository
         WHERE token = @RefreshToken;
         """;
 
+    private const string GetRefreshTokenByUserIdQuery =
+        """
+        SELECT token, expires_at, user_id, id
+        FROM refreshtokens 
+        WHERE user_id = @UserId;
+        """;
+
     public async Task<long> AddAsync(User user, CancellationToken cancellationToken = default)
         => await _connection.QuerySingleAsync<long>(CreateUserQuery, user);
 
@@ -124,12 +131,38 @@ public class UsersRepository(ISqlDbContext context) : IUsersRepository
             new { RefreshToken = refreshToken });
     }
 
+    public async Task<RefreshToken?> GetRefreshTokenAsync(long userId,
+        CancellationToken cancellationToken = default)
+    {
+        return await _connection.QueryFirstOrDefaultAsync<RefreshToken>(GetRefreshTokenByUserIdQuery,
+            new { UserId = userId });
+    }
+
+    public const string RemoveRefreshTokenQuery =
+        """
+        DELETE FROM refreshtokens
+        WHERE id = @TokenId::uuid;
+        """;
+
+    public async Task RemoveRefreshTokenAsync(Guid refreshTokenId, CancellationToken _)
+        => await _connection.ExecuteAsync(RemoveRefreshTokenQuery, new { TokenId = refreshTokenId });
+
+    public const string RemoveRefreshTokenByUserIdQuery =
+        """
+        DELETE FROM refreshtokens
+        WHERE user_id = @UserId;
+        """;
+
+    public async Task RemoveRefreshTokenAsync(long userId, CancellationToken _)
+        => await _connection.ExecuteAsync(RemoveRefreshTokenByUserIdQuery, new { UserId = userId });
+
     public const string FindUserQuery =
         """
         SELECT id, username, first_name, last_name
         FROM users 
-        WHERE Lower(username) LIKE '%' || Lower(@UserName) || '%';;
-        """;
+        WHERE Lower(username) LIKE '%' || Lower(@UserName) || '%';
+        """
+    ;
 
     public async Task<List<SearchUserProfileModel>> FindUsersByNameAsync(string userName,
         CancellationToken cancellationToken = default)

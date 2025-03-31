@@ -14,7 +14,7 @@ public class TokenProvider(IOptions<JwtSettings> jwtSettings, IDateTimeProvider 
     private readonly JwtSettings _jwtSettings = jwtSettings.Value;
     private readonly IDateTimeProvider _dateTimeProvider = dateTimeProvider;
     
-    public string GenerateJwtToken(long id, string email, string username)
+    public string GenerateJwtToken(long id, string email, string username, Guid? refreshToken = null)
     {
         var claims = new List<Claim>
         {
@@ -22,6 +22,8 @@ public class TokenProvider(IOptions<JwtSettings> jwtSettings, IDateTimeProvider 
             new(JwtRegisteredClaimNames.Email, email),
             new("id", id.ToString()),
         };
+        if (refreshToken.HasValue)
+            claims.Add(new("ref_tkn_id", refreshToken.Value.ToString()));
 
         return GenerateJwtToken(claims);
     }

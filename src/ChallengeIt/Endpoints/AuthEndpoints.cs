@@ -16,6 +16,8 @@ public static class AuthEndpoints
         group.MapPost(string.Empty, LoginWithCredentials).WithSummary("Creates a new user");
         group.MapPost("refresh", LoginWithRefreshToken).WithSummary("Refreshes the user token").RequireAuthorization();
         group.MapPost("google", SignInWithGoogle).WithSummary("Sign in with Google");
+        group.MapGet("signout", SignOut).WithSummary("Sign out").RequireAuthorization();
+
         return builder;
     }
 
@@ -66,5 +68,14 @@ public static class AuthEndpoints
             principal => Results.Ok(),
             errors => errors.Problem()
         );
+    }
+
+    private static async Task<IResult> SignOut(
+        [FromServices] ISender mediator,
+        CancellationToken cancellationToken = default)
+    {
+        await mediator.Send(new SignOutCommand(), cancellationToken);
+
+        return Results.NoContent();
     }
 }

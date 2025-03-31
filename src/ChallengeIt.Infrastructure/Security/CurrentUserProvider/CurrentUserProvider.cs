@@ -20,7 +20,13 @@ public class CurrentUserProvider(IHttpContextAccessor httpContextAccessor) : ICu
     public string? GetEmail() => GetSingleClaimValue("email");
     
     public string? GetUsername() => GetSingleClaimValue("unique_name");
-    
+
+    public Guid? GetRefreshTokenId()
+    {
+        string? tokenId = GetSingleClaimValue("ref_tkn_id");
+        return string.IsNullOrEmpty(tokenId) ? null : Guid.Parse(tokenId);
+    }
+
     private string? GetSingleClaimValue(string claimName) =>
         _httpContextAccessor.HttpContext?.User.FindFirst(claimName)?.Value;
 }

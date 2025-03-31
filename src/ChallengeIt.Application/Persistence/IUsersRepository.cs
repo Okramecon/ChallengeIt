@@ -15,6 +15,9 @@ public interface IUsersRepository
     Task<bool> IsUsedUsernameAsync(string userName, CancellationToken cancellationToken = default);
     Task UpdateRefreshTokenAsync(RefreshToken token, CancellationToken cancellationToken = default);
     Task<RefreshToken?> GetRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken = default);
+    Task<RefreshToken?> GetRefreshTokenAsync(long userId, CancellationToken cancellationToken = default);
+    Task RemoveRefreshTokenAsync(Guid refreshTokenId, CancellationToken cancellationToken = default);
+    Task RemoveRefreshTokenAsync(long userId, CancellationToken cancellationToken = default);
 
     Task<List<SearchUserProfileModel>> FindUsersByNameAsync(string userName,
         CancellationToken cancellationToken = default);
