@@ -10,7 +10,8 @@ public record CreateChallengeCommand(
     DateTime StartDate,
     DateTime EndDate,
     decimal BetAmount,
-    List<DateTime> Schedule) : IRequest<ErrorOr<CreateChallengeResponse>>
+    bool Everyday,
+    List<DateTime>? Schedule = null) : IRequest<ErrorOr<CreateChallengeResponse>>
 {
     public Challenge MapToEntity() => new Challenge {
         Title = Title,

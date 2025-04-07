@@ -26,8 +26,10 @@ public class CreateChallengeCommandHandler(
         challenge.UserId = userId;
         challenge.CreatedAt = _dateTimeProvider.UtcNow;
         challenge.Status = ChallengeStatus.New;
-
-        var checkInDates = request.Schedule.Distinct().ToList();
+        
+        List<DateTime> checkInDates = request.Everyday
+            ? [.. Enumerable.Range(0, (int)(request.EndDate - request.StartDate).TotalDays + 1).Select(i => request.StartDate.AddDays(i))]
+            : [.. request.Schedule!.Distinct()];
         
         try
         {

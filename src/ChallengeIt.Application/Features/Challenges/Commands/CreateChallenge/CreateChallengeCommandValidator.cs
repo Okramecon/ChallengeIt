@@ -11,17 +11,16 @@ public class CreateChallengeCommandValidator : AbstractValidator<CreateChallenge
             .MinimumLength(2)
             .MaximumLength(10000);
 
-        RuleFor(x => x.BetAmount)
-            .GreaterThan(10)
-            .LessThanOrEqualTo(100);
-        
-        RuleFor(x => x.Schedule)
-            .NotNull()
-            .NotEmpty().WithMessage("You should provide a schedule dates.")
-            .ForEach(date =>
-            {
-                date.NotEmpty().WithMessage("Date cannot be empty.")
-                    .Must(d => d.Date >= dateTimeProvider.UtcNow.Date).WithMessage("Date must be in the future.");
-            });
+        When(x => !x.Everyday, () =>
+        {
+            RuleFor(x => x.Schedule)
+                .NotNull()
+                .NotEmpty().WithMessage("You should provide a schedule dates when Everyday is false.")
+                .ForEach(date =>
+                {
+                    date.NotEmpty().WithMessage("Date cannot be empty.")
+                        .Must(d => d.Date >= dateTimeProvider.UtcNow.Date).WithMessage("Date must be in the future.");
+                });
+        });
     }
 }
