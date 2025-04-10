@@ -13,8 +13,10 @@ using ChallengeIt.Infrastructure.Utils;
 using Dapper;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Npgsql;
 
 namespace ChallengeIt.Infrastructure.DependencyInjection;
@@ -40,22 +42,31 @@ public static class ServiceCollectionExtensions
 
         if (string.IsNullOrWhiteSpace(connectionString))
         {
-            throw new InvalidOperationException("The connection string 'DefaultConnection' is missing or empty. Ensure it is properly configured in appsettings.json or environment variables.");
+            throw new InvalidOperationException("The connection string 'DefaultConnection' is missing or empty.");
         }
 
+
+        // EF Core registration - IMPORTANT PART
+        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString)
+        .EnableSensitiveDataLogging()
+        .LogTo(Console.WriteLine, LogLevel.Information));
+
+        // Dapper-related registrations
         var dapperContextOptions = new DapperContextOptions(connectionString);
         services.AddSingleton(dapperContextOptions);
-        
+
         DefaultTypeMap.MatchNamesWithUnderscores = true;
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
-        
         services.AddScoped<IDbConnection>(_ => new NpgsqlConnection(connectionString));
+
+
+        // Other registrations
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ISqlDbContext, DapperContext>();
         services.AddScoped<IUsersRepository, UsersRepository>();
         services.AddScoped<IChallengesRepository, ChallengesRepository>();
         services.AddScoped<ICheckInsRepository, CheckInsRepository>();
     }
-    
+
     private static void AddAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddHttpContextAccessor();

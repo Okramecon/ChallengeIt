@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Diagnostics;
 using System.Reflection;
@@ -107,15 +108,33 @@ public class BaseCrudRepository<TEntity, TKey>(ISqlDbContext context, string tab
     private string GetColumns(bool includeIdentity = false)
     {
         var properties = typeof(TEntity).GetProperties()
-            .Where(p => includeIdentity || p.Name != "Id")
+            .Where(p => ShouldIncludeProperty(p, includeIdentity))
             .Select(GetColumnName);
         return string.Join(", ", properties);
     }
 
+    private bool ShouldIncludeProperty(PropertyInfo property, bool includeIdentity)
+    {
+        if (!includeIdentity && IsIdentityColumn(property))
+        {
+            return false;
+        }
+
+        if (property.GetCustomAttribute<ColumnAttribute>() == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+    private bool IsIdentityColumn(PropertyInfo property) => property.Name.Equals("Id", StringComparison.OrdinalIgnoreCase) ||
+               property.GetCustomAttribute<KeyAttribute>() != null;
+
+
     private string GetValues(bool includeIdentity = false)
     {
         var properties = typeof(TEntity).GetProperties()
-            .Where(p => includeIdentity || p.Name != "Id")
+            .Where(p => ShouldIncludeProperty(p, includeIdentity))
             .Select(p => "@" + p.Name);
         return string.Join(", ", properties);
     }
@@ -123,7 +142,7 @@ public class BaseCrudRepository<TEntity, TKey>(ISqlDbContext context, string tab
     private string GetValuesBatch(int count, bool includeIdentity = false)
     {
         var properties = typeof(TEntity).GetProperties()
-            .Where(p => includeIdentity || p.Name != "Id")
+            .Where(p => ShouldIncludeProperty(p, includeIdentity))
             .ToList();
 
         var valueGroups = Enumerable.Range(0, count)
@@ -135,7 +154,7 @@ public class BaseCrudRepository<TEntity, TKey>(ISqlDbContext context, string tab
     private string GetUpdateSetClause(bool includeIdentity = false)
     {
         var properties = typeof(TEntity).GetProperties()
-            .Where(p => includeIdentity || p.Name != "Id")
+            .Where(p => ShouldIncludeProperty(p, includeIdentity))
             .Select(p => $"{GetColumnName(p)} = @{p.Name}");
         
         return string.Join(", ", properties);

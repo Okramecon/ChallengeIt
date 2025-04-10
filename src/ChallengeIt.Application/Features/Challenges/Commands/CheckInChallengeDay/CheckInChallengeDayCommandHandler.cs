@@ -1,4 +1,5 @@
-﻿using ChallengeIt.Application.Persistence;
+﻿using System;
+using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
 using ChallengeIt.Domain.Errors;
@@ -87,7 +88,7 @@ public class CheckInChallengeDayCommandHandler(
             return Error.Forbidden(description: "You are not authorized to check in this challenge.");
         }
 
-        if (checkInEntity.Date != dateTimeProvider.UtcNow.Date)
+        if (checkInEntity.Date.Date != dateTimeProvider.UtcNow.Date)
         {
             return Error.Conflict(description : "You cannot check in this date.");
         }

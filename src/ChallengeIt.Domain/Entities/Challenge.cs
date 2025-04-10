@@ -2,6 +2,7 @@
 
 namespace ChallengeIt.Domain.Entities;
 
+[Table("challenges")]
 public class Challenge : Entity<Guid>
 {
     public Challenge()
@@ -42,6 +43,10 @@ public class Challenge : Entity<Guid>
     public bool IsActive(DateTime currentDate) => Status == ChallengeStatus.Pending || 
                                                   currentDate.Date >= StartDate.Date ||
                                                   currentDate.Date <= EndDate.Date;
+
+
+    public ICollection<CheckIn>? CheckIns { get; set; }
+    public User? User { get; set; }
 }
 
 public enum ChallengeStatus

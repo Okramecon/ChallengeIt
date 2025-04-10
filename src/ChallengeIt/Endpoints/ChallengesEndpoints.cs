@@ -19,7 +19,8 @@ public static class ChallengesEndpoints
         group.MapPost(string.Empty, CreateChallenge).WithSummary("Creates a new challenge.");
         group.MapPut(string.Empty, UpdateChallenge).WithSummary("Updates existing challenge.");
         group.MapPatch("checkin", CheckInChallengeDay).WithSummary("Checkin challenge day.");
-        
+        group.MapGet("checkin/today", GetTodaysActivities).WithSummary("Gets today's activities for current user.");
+
         return builder;
     }
 
@@ -62,6 +63,16 @@ public static class ChallengesEndpoints
         }, cancellationToken);
         
         return Results.Ok(result.Value);
+    }
+
+    private static async Task<IResult> GetTodaysActivities(
+        [FromServices] ISender mediator,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await mediator.Send(new GetTodayCheckinsForUserQuery(), cancellationToken);
+        return result.Match(
+            result => Results.Ok(result),
+            errors => errors.Problem());
     }
 
     private static async Task<IResult> CheckInChallengeDay(

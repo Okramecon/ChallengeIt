@@ -2,6 +2,7 @@
 
 namespace ChallengeIt.Domain.Entities;
 
+[Table("checkins")]
 public class CheckIn : Entity<Guid>
 {
     public CheckIn()
@@ -19,5 +20,8 @@ public class CheckIn : Entity<Guid>
     public Guid ChallengeId { get; set; }
     
     [Column("checked")]
-    public bool Checked { get; set; }   
+    public bool Checked { get; set; }
+
+    public User? User { get; set; }
+    public Challenge? Challenge { get; set; }
 }

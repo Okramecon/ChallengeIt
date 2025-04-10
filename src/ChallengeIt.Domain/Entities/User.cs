@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 using ChallengeIt.Domain.Entities.Contracts;
 
 namespace ChallengeIt.Domain.Entities;
 
+[Table("users")]
 public class User : Entity<long>, ITrackable
 {
     [Column("username")]
@@ -28,4 +30,7 @@ public class User : Entity<long>, ITrackable
     
     [Column("updated_at")]
     public DateTime? UpdatedAt { get; set; }
+
+    public ICollection<Challenge> Challenges { get; set; } = [];
+    public ICollection<CheckIn> CheckIns { get; set; } = [];
 }

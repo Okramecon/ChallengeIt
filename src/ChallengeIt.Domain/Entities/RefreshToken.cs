@@ -2,6 +2,7 @@
 
 namespace ChallengeIt.Domain.Entities;
 
+[Table("refreshtokens")]
 public class RefreshToken: Entity<Guid>
 {
     [Column("token")]
