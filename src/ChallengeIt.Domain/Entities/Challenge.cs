@@ -39,7 +39,25 @@ public class Challenge : Entity<Guid>
     
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }
-    
+
+    [Column("minimal_activity_timer")]
+    public int MinimalActivityMinutesTimer { get; set; } = 0;
+
+    [Column("minimal_activity_description")]
+    public string? MinimalActivityDescription { get; set; } = string.Empty;
+
+    [Column("theme_code")]
+    public int ThemeCode { get;set; } = 0;
+
+    [Column("goal")]
+    public string Goal { get; set; } = string.Empty;
+
+    [Column("motivation")]
+    public string? Motivation { get; set;} = string.Empty;
+
+    [Column("is_private")]
+    public bool IsPrivate { get; set; } = false;
+
     public bool IsActive(DateTime currentDate) => Status == ChallengeStatus.Pending || 
                                                   currentDate.Date >= StartDate.Date ||
                                                   currentDate.Date <= EndDate.Date;

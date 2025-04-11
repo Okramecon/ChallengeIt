@@ -22,6 +22,12 @@ public class CheckIn : Entity<Guid>
     [Column("checked")]
     public bool Checked { get; set; }
 
+    [Column("notes")]
+    public string? Notes { get; set; }
+
+    [Column("is_last")]
+    public bool IsLast { get; set; }
+
     public User? User { get; set; }
     public Challenge? Challenge { get; set; }
 }

@@ -11,6 +11,13 @@ public record CreateChallengeCommand(
     DateTime EndDate,
     decimal BetAmount,
     bool Everyday,
+    string? Goal,
+    string? Motivation,
+    string? MinimalActivityDescription,
+    int MinimalActivityMinutesTimer = 0,
+    int MaxAllowedMissedDaysCount = 1,
+    int ThemeCode = 0,
+    bool IsPrivate = false,
     List<DateTime>? Schedule = null) : IRequest<ErrorOr<CreateChallengeResponse>>
 {
     public Challenge MapToEntity() => new()
@@ -18,6 +25,13 @@ public record CreateChallengeCommand(
         Title = Title,
         BetAmount = BetAmount,
         StartDate = StartDate,
-        EndDate = EndDate
+        EndDate = EndDate,
+        Goal = Goal ?? string.Empty,
+        Motivation = Motivation,
+        MinimalActivityDescription = MinimalActivityDescription,
+        MinimalActivityMinutesTimer = MinimalActivityMinutesTimer,
+        MaxAllowedMissedDaysCount = MaxAllowedMissedDaysCount,
+        ThemeCode = ThemeCode,
+        IsPrivate = IsPrivate,
     };
 }

@@ -46,7 +46,8 @@ public class CreateChallengeCommandHandler(
 
             // Insert Check-Ins
             var checkIns = CreateCheckIns(challengeId, userId, checkInDates).ToList();
-            
+            checkIns.Last().IsLast = true;
+
             var createdCheckIns = await _unitOfWork.CheckIns.CreateBatchAsync(checkIns, cancellationToken);
                 
             _unitOfWork.Commit();
@@ -70,8 +71,10 @@ public class CreateChallengeCommandHandler(
         }
     }
 
-    private static IEnumerable<CheckIn> CreateCheckIns(Guid challengeId, long userId, List<DateTime> dates)
-        => dates.Distinct().Select(d => new CheckIn
+    private static IEnumerable<CheckIn> CreateCheckIns(Guid challengeId, long userId, List<DateTime> dates) => dates
+        .Distinct()
+        .OrderBy(d => d.Date)
+        .Select(d => new CheckIn
         {
             Id = Guid.NewGuid(),
             ChallengeId = challengeId,
