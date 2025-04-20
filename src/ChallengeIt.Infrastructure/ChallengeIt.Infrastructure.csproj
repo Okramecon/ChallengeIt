@@ -23,4 +23,8 @@
       <ProjectReference Include="..\ChallengeIt.Application\ChallengeIt.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="BackgroundJobs\" />
+    </ItemGroup>
+
 </Project>

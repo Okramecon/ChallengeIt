@@ -18,6 +18,7 @@ public record CreateChallengeCommand(
     int MaxAllowedMissedDaysCount = 1,
     int ThemeCode = 0,
     bool IsPrivate = false,
+    string TimeZone = "UTC",
     List<DateTime>? Schedule = null) : IRequest<ErrorOr<CreateChallengeResponse>>
 {
     public Challenge MapToEntity() => new()

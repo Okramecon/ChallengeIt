@@ -1,10 +1,12 @@
-﻿using ChallengeIt.API.Contracts.Challenges;
+﻿using System.Runtime.InteropServices;
+using ChallengeIt.API.Contracts.Challenges;
 using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
 using ChallengeIt.Domain.Entities;
 using ErrorOr;
 using MediatR;
+using TimeZoneConverter;
 
 namespace ChallengeIt.Application.Features.Challenges.Commands.CreateChallenge;
 
@@ -20,17 +22,22 @@ public class CreateChallengeCommandHandler(
     
     public async Task<ErrorOr<CreateChallengeResponse>> Handle(CreateChallengeCommand request, CancellationToken cancellationToken)
     {
+        var timeZone = GetSystemTimeZone(request);
+
+        if (timeZone is null)
+            return Error.Unexpected("Error creating challenge. Time zone mapping error.");
+
         var userId = _currentUserProvider.GetUserId();
-        
+
         var challenge = request.MapToEntity();
         challenge.UserId = userId;
         challenge.CreatedAt = _dateTimeProvider.UtcNow;
         challenge.Status = ChallengeStatus.New;
-        
+
         List<DateTime> checkInDates = request.Everyday
             ? [.. Enumerable.Range(0, (int)(request.EndDate - request.StartDate).TotalDays + 1).Select(i => request.StartDate.AddDays(i))]
             : [.. request.Schedule!.Distinct()];
-        
+
         try
         {
             _unitOfWork.BeginTransaction();
@@ -47,9 +54,10 @@ public class CreateChallengeCommandHandler(
             // Insert Check-Ins
             var checkIns = CreateCheckIns(challengeId, userId, checkInDates).ToList();
             checkIns.Last().IsLast = true;
-
+            // TODO Okram
+            //throw new Exception("Prevent creating checkins");
             var createdCheckIns = await _unitOfWork.CheckIns.CreateBatchAsync(checkIns, cancellationToken);
-                
+
             _unitOfWork.Commit();
 
             return new CreateChallengeResponse(
@@ -69,6 +77,15 @@ public class CreateChallengeCommandHandler(
         {
             _unitOfWork.ConnectionClose();
         }
+    }
+
+    private static TimeZoneInfo? GetSystemTimeZone(CreateChallengeCommand request)
+    {
+        return RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+            ? TZConvert.TryGetTimeZoneInfo(request.TimeZone, out var timeZoneInfo)
+                ? timeZoneInfo
+                : null
+            : TimeZoneInfo.FindSystemTimeZoneById(request.TimeZone);
     }
 
     private static IEnumerable<CheckIn> CreateCheckIns(Guid challengeId, long userId, List<DateTime> dates) => dates

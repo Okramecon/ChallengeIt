@@ -57,5 +57,5 @@ public class UnitOfWork(ISqlDbContext sqlDbContext) : IUnitOfWork
     public IChallengesRepository Challenges { get; private set; } = new ChallengesRepository(sqlDbContext);
 
     public IUsersRepository Users { get; private set; } = new UsersRepository(sqlDbContext);
-    public ICheckInsRepository CheckIns { get; private set; } = new CheckInsRepository(sqlDbContext, null!);
+    public ICheckInsRepository CheckIns { get; private set; } = new CheckInsRepository(sqlDbContext);
 }

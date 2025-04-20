@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChallengeIt.Infrastructure.Persistence.Repositories;
 
-public class CheckInsRepository(ISqlDbContext context, AppDbContext db)
+public class CheckInsRepository(ISqlDbContext context)
     : BaseCrudRepository<CheckIn, Guid>(context, "checkins"), ICheckInsRepository
 {
     public Task<List<CheckIn>> GetChallengeCheckInsAsync(Guid challengeId, CancellationToken cancellationToken = default)
@@ -48,12 +48,28 @@ public class CheckInsRepository(ISqlDbContext context, AppDbContext db)
         WHERE c.user_id = @id AND c.date = @date::date;
     ";
 
-    public async Task<List<TodayCheckInModel>> GetCheckinsForDayAsync(DateTime date, long userId, CancellationToken cancellationToken = default)
+    public async Task<List<TodayCheckInModel>> GetCheckinsForDateAsync(DateTime date, long userId, CancellationToken cancellationToken = default)
     {
         return [.. (await DbConnection.QueryAsync<TodayCheckInModel>(GetCheckinsForDayQuery, new
         {
             id = userId,
             date = date
+        }))];
+    }
+
+    private const string GetCheckinsForDateQuery = @"
+        SELECT c.id AS ""Id"", c.challenge_id AS ""ChallengeId""
+        FROM checkins as c
+        INNER JOIN challenges AS c0 ON c.challenge_id = c0.id
+        WHERE c.time_zone = @timeZoneId AND c.date = @date::date AND c.checked = FALSE;
+    ";
+
+    public async Task<List<CheckIn>> GetUncheckedCheckInsForDateAsync(string timeZoneId, DateTime date, CancellationToken cancellationToken = default)
+    {
+        return [.. (await DbConnection.QueryAsync<CheckIn>(GetCheckinsForDateQuery, new
+        {
+            timeZoneId,
+            date
         }))];
     }
 }

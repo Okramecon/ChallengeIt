@@ -1,0 +1,1078 @@
+2025-04-20 17:21:45.249 +06:00 [INF] Starting web application
+2025-04-20 17:21:47.375 +06:00 [INF] Start installing Hangfire SQL objects...
+2025-04-20 17:21:47.446 +06:00 [INF] Hangfire SQL objects installed.
+2025-04-20 17:21:48.688 +06:00 [INF] User profile is available. Using 'C:\Users\akram\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-20 17:21:49.018 +06:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-04-20 17:21:49.039 +06:00 [INF] Request starting HTTP/1.1 POST https://localhost:44356/api/auth - application/json 56
+2025-04-20 17:21:49.039 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger - null null
+2025-04-20 17:21:49.088 +06:00 [INF] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: localhost, DB: postgres, Schema: hangfire'
+2025-04-20 17:21:49.088 +06:00 [INF] Using the following options for PostgreSQL job storage:
+2025-04-20 17:21:49.088 +06:00 [INF]     Queue poll interval: 00:00:15.
+2025-04-20 17:21:49.089 +06:00 [INF]     Invisibility timeout: 00:30:00.
+2025-04-20 17:21:49.089 +06:00 [INF]     Use sliding invisibility timeout: False.
+2025-04-20 17:21:49.089 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2025-04-20 17:21:49.115 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-20 17:21:49.115 +06:00 [INF] Hosting environment: Development
+2025-04-20 17:21:49.115 +06:00 [INF] Content root path: E:\projects\projects\challengeit\ChallengeIt2\src\ChallengeIt
+2025-04-20 17:21:49.154 +06:00 [INF] Server okram:24608:a085c9c1 successfully announced in 20.0728 ms
+2025-04-20 17:21:49.161 +06:00 [INF] Server okram:24608:a085c9c1 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2025-04-20 17:21:49.185 +06:00 [INF] 1 servers were removed due to timeout
+2025-04-20 17:21:49.358 +06:00 [INF] Server okram:24608:a085c9c1 all the dispatchers started
+2025-04-20 17:21:49.523 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/index.html - null null
+2025-04-20 17:21:49.566 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger - 301 null null 532.1501ms
+2025-04-20 17:21:50.306 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/index.html - 200 null text/html;charset=utf-8 782.7849ms
+2025-04-20 17:21:50.314 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/swagger-ui-bundle.js - null null
+2025-04-20 17:21:50.314 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/swagger-ui.css - null null
+2025-04-20 17:21:50.319 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/swagger-ui-standalone-preset.js - null null
+2025-04-20 17:21:50.335 +06:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-04-20 17:21:50.335 +06:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-04-20 17:21:50.335 +06:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-04-20 17:21:50.350 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 31.3257ms
+2025-04-20 17:21:50.362 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/swagger-ui.css - 200 143943 text/css 48.7366ms
+2025-04-20 17:21:50.372 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 59.2681ms
+2025-04-20 17:21:50.424 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-20 17:21:50.424 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/_vs/browserLink - null null
+2025-04-20 17:21:50.427 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 3.3136ms
+2025-04-20 17:22:10.442 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20018.2527ms
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.477 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.517 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.518 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.525 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.537 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.558 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.580 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/v1/swagger.json - null null
+2025-04-20 17:22:10.591 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.601 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.687 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.699 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.712 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.721 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.723 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.778 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.787 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.826 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.833 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.862 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.865 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.865 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 285.8136ms
+2025-04-20 17:22:10.909 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.909 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.969 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.977 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.984 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.984 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.986 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.989 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:10.994 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.002 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.061 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.074 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.070 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.069 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.076 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.081 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.100 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.137 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.231 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.255 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.255 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.256 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.256 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.258 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.283 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.295 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.296 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.308 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.322 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.339 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.347 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.366 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.375 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.379 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.380 +06:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04/11/2025 8:57:34 AM', Current time (UTC): '04/20/2025 11:22:11 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-04-20 17:22:11.398 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.416 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.419 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.425 +06:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '04/11/2025 8:57:34 AM', Current time (UTC): '04/20/2025 11:22:11 AM'.
+2025-04-20 17:22:11.411 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.393 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.439 +06:00 [INF] Executing endpoint 'HTTP: POST api/auth/ => LoginWithCredentials'
+2025-04-20 17:22:11.440 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.470 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.631 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.634 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.655 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.661 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.669 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.676 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.700 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.718 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.719 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.730 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.732 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.756 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.758 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.758 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.773 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.785 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.799 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.801 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:11.943 +06:00 [WRN] Failed to process the job '83': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:31.
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 433
+   at ChallengeIt.Infrastructure.Persistence.Repositories.CheckInsRepository.GetUncheckedCheckInsForDateAsync(String timeZoneId, DateTime date, CancellationToken cancellationToken) in E:\projects\projects\challengeit\ChallengeIt2\src\ChallengeIt.Infrastructure\Persistence\Repositories\CheckInsRepository.cs:line 69
+   at ChallengeIt.Application.BackgroundJobs.CheckInProcessor.ProcessTimezoneCheckins(String timezoneId) in E:\projects\projects\challengeit\ChallengeIt2\src\ChallengeIt.Application\BackgroundJobs\CheckInProcessor.cs:line 18
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:22:12.032 +06:00 [INF] Setting HTTP status code 200.
+2025-04-20 17:22:12.050 +06:00 [INF] Writing value of type 'LoginResponse' as Json.
+2025-04-20 17:22:12.055 +06:00 [INF] Executed endpoint 'HTTP: POST api/auth/ => LoginWithCredentials'
+2025-04-20 17:22:12.058 +06:00 [INF] Request finished HTTP/1.1 POST https://localhost:44356/api/auth - 200 null application/json; charset=utf-8 23025.1552ms
+2025-04-20 17:22:12.094 +06:00 [WRN] Failed to process the job '94': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:34.
+System.InvalidOperationException: Could not get a value of the job parameter `CurrentCulture`. See inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.Open()
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlConnection.GetJobParameter(String id, String name)
+   at Hangfire.Server.PerformContext.GetJobParameter[T](String name, Boolean allowStale) in C:\projects\hangfire-525\src\Hangfire.Core\Server\PerformContext.cs:line 135
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+   --- End of inner exception stack trace ---
+   at Hangfire.Server.PerformContext.GetJobParameter[T](String name, Boolean allowStale) in C:\projects\hangfire-525\src\Hangfire.Core\Server\PerformContext.cs:line 142
+   at Hangfire.CaptureCultureAttribute.OnPerforming(PerformingContext context) in C:\projects\hangfire-525\src\Hangfire.Core\CaptureCultureAttribute.cs:line 112
+   at Hangfire.Server.BackgroundJobPerformer.InvokeOnPerforming(KeyValuePair`2 ctx) in C:\projects\hangfire-525\src\Hangfire.Core\Server\BackgroundJobPerformer.cs:line 198
+2025-04-20 17:22:12.230 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:12.243 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:12.470 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:12.471 +06:00 [WRN] Failed to process the job '99': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:34.
+System.InvalidOperationException: Could not get a value of the job parameter `CurrentCulture`. See inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.Open()
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlConnection.GetJobParameter(String id, String name)
+   at Hangfire.Server.PerformContext.GetJobParameter[T](String name, Boolean allowStale) in C:\projects\hangfire-525\src\Hangfire.Core\Server\PerformContext.cs:line 135
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+   --- End of inner exception stack trace ---
+   at Hangfire.Server.PerformContext.GetJobParameter[T](String name, Boolean allowStale) in C:\projects\hangfire-525\src\Hangfire.Core\Server\PerformContext.cs:line 142
+   at Hangfire.CaptureCultureAttribute.OnPerforming(PerformingContext context) in C:\projects\hangfire-525\src\Hangfire.Core\CaptureCultureAttribute.cs:line 112
+   at Hangfire.Server.BackgroundJobPerformer.InvokeOnPerforming(KeyValuePair`2 ctx) in C:\projects\hangfire-525\src\Hangfire.Core\Server\BackgroundJobPerformer.cs:line 198
+2025-04-20 17:22:12.487 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:12.490 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:12.526 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:22:19.290 +06:00 [WRN] Server okram:24608:a085c9c1 encountered an exception while sending heartbeat
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlConnection.Heartbeat(String serverId)
+   at Hangfire.Server.ServerHeartbeatProcess.Execute(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\ServerHeartbeatProcess.cs:line 50
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:22:20.632 +06:00 [INF] Request starting HTTP/1.1 POST https://localhost:44356/api/challenges - application/json 547
+2025-04-20 17:22:20.647 +06:00 [INF] Executing endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:22:28.665 +06:00 [INF] Setting HTTP status code 400.
+2025-04-20 17:22:28.672 +06:00 [INF] Writing value of type 'HttpValidationProblemDetails' as Json.
+2025-04-20 17:22:28.677 +06:00 [INF] Executed endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:22:28.678 +06:00 [INF] Request finished HTTP/1.1 POST https://localhost:44356/api/challenges - 400 null application/problem+json 8045.8323ms
+2025-04-20 17:22:29.026 +06:00 [ERR] Execution Worker is in the Failed state now due to an exception, execution will be retried in no more than 00:01:21
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlJobQueue.<>c__DisplayClass13_0.<Dequeue_Transaction>b__0()
+   at Hangfire.PostgreSql.Utils.Utils.TryExecute[T](Func`1 func, T& result, Func`2 swallowException, Nullable`1 tryCount)
+   at Hangfire.PostgreSql.PostgreSqlJobQueue.Dequeue_Transaction(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlJobQueue.Dequeue(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlConnection.FetchNextJob(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.Server.Worker.Execute(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 107
+   at Hangfire.Server.BackgroundProcessDispatcherBuilder.ExecuteProcess(Guid executionId, Object state) in C:\projects\hangfire-525\src\Hangfire.Core\Server\BackgroundProcessDispatcherBuilder.cs:line 82
+   at Hangfire.Processing.BackgroundExecution.Run(Action`2 callback, Object state) in C:\projects\hangfire-525\src\Hangfire.Core\Processing\BackgroundExecution.cs:line 118
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:22:29.052 +06:00 [ERR] Execution RecurringJobScheduler is in the Failed state now due to an exception, execution will be retried in no more than 00:00:16
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.Server.RecurringJobScheduler.UseConnectionDistributedLock[T](JobStorage storage, Func`2 action) in C:\projects\hangfire-525\src\Hangfire.Core\Server\RecurringJobScheduler.cs:line 423
+   at Hangfire.Server.RecurringJobScheduler.EnqueueNextRecurringJobs(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\RecurringJobScheduler.cs:line 203
+   at Hangfire.Server.RecurringJobScheduler.Execute(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\RecurringJobScheduler.cs:line 176
+   at Hangfire.Server.BackgroundProcessDispatcherBuilder.ExecuteProcess(Guid executionId, Object state) in C:\projects\hangfire-525\src\Hangfire.Core\Server\BackgroundProcessDispatcherBuilder.cs:line 82
+   at Hangfire.Processing.BackgroundExecution.Run(Action`2 callback, Object state) in C:\projects\hangfire-525\src\Hangfire.Core\Processing\BackgroundExecution.cs:line 118
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:22:44.623 +06:00 [INF] Request starting HTTP/1.1 POST https://localhost:44356/api/challenges - application/json 541
+2025-04-20 17:22:44.627 +06:00 [INF] Executing endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:22:48.413 +06:00 [INF] Setting HTTP status code 500.
+2025-04-20 17:22:48.413 +06:00 [INF] Writing value of type 'ProblemDetails' as Json.
+2025-04-20 17:22:48.414 +06:00 [INF] Executed endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:22:48.414 +06:00 [INF] Request finished HTTP/1.1 POST https://localhost:44356/api/challenges - 500 null application/problem+json 3790.7212ms
+2025-04-20 17:22:49.333 +06:00 [WRN] Server okram:24608:a085c9c1 encountered an exception while sending heartbeat
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlConnection.Heartbeat(String serverId)
+   at Hangfire.Server.ServerHeartbeatProcess.Execute(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\ServerHeartbeatProcess.cs:line 50
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:22:59.184 +06:00 [ERR] Execution DelayedJobScheduler is in the Failed state now due to an exception, execution will be retried in no more than 00:00:25
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.Server.DelayedJobScheduler.UseConnectionDistributedLock[T](JobStorage storage, Func`2 action) in C:\projects\hangfire-525\src\Hangfire.Core\Server\DelayedJobScheduler.cs:line 411
+   at Hangfire.Server.DelayedJobScheduler.EnqueueNextScheduledJobs(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\DelayedJobScheduler.cs:line 167
+   at Hangfire.Server.DelayedJobScheduler.Execute(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\DelayedJobScheduler.cs:line 148
+   at Hangfire.Server.BackgroundProcessDispatcherBuilder.ExecuteProcess(Guid executionId, Object state) in C:\projects\hangfire-525\src\Hangfire.Core\Server\BackgroundProcessDispatcherBuilder.cs:line 82
+   at Hangfire.Processing.BackgroundExecution.Run(Action`2 callback, Object state) in C:\projects\hangfire-525\src\Hangfire.Core\Processing\BackgroundExecution.cs:line 118
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.011 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.011 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.051 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.058 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.092 +06:00 [WRN] Failed to immediately re-queue the background job '110'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.092 +06:00 [WRN] Failed to immediately re-queue the background job '100'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.127 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.127 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.167 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.167 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.210 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.214 +06:00 [WRN] Failed to immediately re-queue the background job '111'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.214 +06:00 [WRN] Failed to immediately re-queue the background job '101'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.210 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.278 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.278 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.324 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.324 +06:00 [ERR] 10 state change attempt(s) failed due to an exception, moving job to the FailedState
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlConnection.AcquireLock(String resource, TimeSpan timeout)
+   at Hangfire.States.BackgroundJobStateChanger.ChangeState(StateChangeContext context) in C:\projects\hangfire-525\src\Hangfire.Core\States\BackgroundJobStateChanger.cs:line 61
+   at Hangfire.Server.Worker.TryChangeState(BackgroundProcessContext context, IStorageConnection connection, String jobId, IState state, IReadOnlyDictionary`2 customData, String[] expectedStates, IFetchedJob completeJob, BackgroundJob& backgroundJob, CancellationToken initializeToken, CancellationToken abortToken) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 235
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.425 +06:00 [WRN] Failed to immediately re-queue the background job '105'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.425 +06:00 [WRN] Failed to immediately re-queue the background job '98'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.504 +06:00 [WRN] Failed to immediately re-queue the background job '104'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.602 +06:00 [WRN] Failed to immediately re-queue the background job '94'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.637 +06:00 [WRN] Failed to immediately re-queue the background job '102'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.711 +06:00 [WRN] Failed to immediately re-queue the background job '106'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.750 +06:00 [WRN] Failed to immediately re-queue the background job '107'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.750 +06:00 [WRN] Failed to immediately re-queue the background job '109'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.792 +06:00 [WRN] Failed to immediately re-queue the background job '103'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:05.835 +06:00 [WRN] Failed to immediately re-queue the background job '108'. Next invocation may be delayed, if invisibility timeout is used
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlFetchedJob.Requeue()
+   at Hangfire.Server.Worker.Requeue(IFetchedJob fetchedJob) in C:\projects\hangfire-525\src\Hangfire.Core\Server\Worker.cs:line 278
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:08.270 +06:00 [INF] Request starting HTTP/1.1 POST https://localhost:44356/api/challenges - application/json 529
+2025-04-20 17:23:08.271 +06:00 [INF] Executing endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:23:09.940 +06:00 [INF] Setting HTTP status code 500.
+2025-04-20 17:23:09.940 +06:00 [INF] Writing value of type 'ProblemDetails' as Json.
+2025-04-20 17:23:09.940 +06:00 [INF] Executed endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:23:09.941 +06:00 [INF] Request finished HTTP/1.1 POST https://localhost:44356/api/challenges - 500 null application/problem+json 1670.8167ms
+2025-04-20 17:23:19.380 +06:00 [WRN] Server okram:24608:a085c9c1 encountered an exception while sending heartbeat
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlConnection.Heartbeat(String serverId)
+   at Hangfire.Server.ServerHeartbeatProcess.Execute(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\ServerHeartbeatProcess.cs:line 50
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:23:30.327 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/index.html - null null
+2025-04-20 17:23:30.339 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/index.html - 200 null text/html;charset=utf-8 12.0364ms
+2025-04-20 17:23:30.425 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-20 17:23:30.426 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 1.3632ms
+2025-04-20 17:23:30.431 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/_vs/browserLink - null null
+2025-04-20 17:23:30.438 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/_vs/browserLink - 200 null text/javascript; charset=UTF-8 7.6333ms
+2025-04-20 17:23:30.609 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/v1/swagger.json - null null
+2025-04-20 17:23:30.616 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.4327ms
+2025-04-20 17:23:30.623 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/favicon-32x32.png - null null
+2025-04-20 17:23:30.624 +06:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-04-20 17:23:30.624 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/favicon-32x32.png - 200 628 image/png 1.2283ms
+2025-04-20 17:23:36.623 +06:00 [INF] Request starting HTTP/1.1 POST https://localhost:44356/api/challenges - application/json 535
+2025-04-20 17:23:36.624 +06:00 [INF] Executing endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:23:40.566 +06:00 [INF] Setting HTTP status code 500.
+2025-04-20 17:23:40.567 +06:00 [INF] Writing value of type 'ProblemDetails' as Json.
+2025-04-20 17:23:40.568 +06:00 [INF] Executed endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:23:40.569 +06:00 [INF] Request finished HTTP/1.1 POST https://localhost:44356/api/challenges - 500 null application/problem+json 3945.444ms
+2025-04-20 17:23:44.763 +06:00 [INF] Request starting HTTP/1.1 POST https://localhost:44356/api/challenges - application/json 530
+2025-04-20 17:23:44.764 +06:00 [INF] Executing endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:24:16.420 +06:00 [WRN] Server okram:24608:a085c9c1 encountered an exception while sending heartbeat
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.PostgreSql.PostgreSqlConnection.Heartbeat(String serverId)
+   at Hangfire.Server.ServerHeartbeatProcess.Execute(BackgroundProcessContext context) in C:\projects\hangfire-525\src\Hangfire.Core\Server\ServerHeartbeatProcess.cs:line 50
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 357
+    Routine: InitProcess
+2025-04-20 17:26:03.853 +06:00 [INF] Starting web application
+2025-04-20 17:26:04.078 +06:00 [INF] Start installing Hangfire SQL objects...
+2025-04-20 17:26:04.132 +06:00 [INF] Hangfire SQL objects installed.
+2025-04-20 17:26:04.623 +06:00 [INF] User profile is available. Using 'C:\Users\akram\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-20 17:26:04.804 +06:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-04-20 17:26:04.815 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/index.html - null null
+2025-04-20 17:26:04.842 +06:00 [INF] Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: localhost, DB: postgres, Schema: hangfire'
+2025-04-20 17:26:04.843 +06:00 [INF] Using the following options for PostgreSQL job storage:
+2025-04-20 17:26:04.843 +06:00 [INF]     Queue poll interval: 00:00:15.
+2025-04-20 17:26:04.843 +06:00 [INF]     Invisibility timeout: 00:30:00.
+2025-04-20 17:26:04.843 +06:00 [INF]     Use sliding invisibility timeout: False.
+2025-04-20 17:26:04.843 +06:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2025-04-20 17:26:04.858 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-20 17:26:04.858 +06:00 [INF] Hosting environment: Development
+2025-04-20 17:26:04.858 +06:00 [INF] Content root path: E:\projects\projects\challengeit\ChallengeIt2\src\ChallengeIt
+2025-04-20 17:26:04.880 +06:00 [INF] Server okram:14612:3162f4b6 successfully announced in 15.5852 ms
+2025-04-20 17:26:04.892 +06:00 [INF] Server okram:14612:3162f4b6 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2025-04-20 17:26:05.041 +06:00 [INF] Server okram:14612:3162f4b6 all the dispatchers started
+2025-04-20 17:26:05.383 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/index.html - 200 null text/html;charset=utf-8 569.7478ms
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.573 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/_vs/browserLink - null null
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.572 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.573 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-20 17:26:05.579 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.582 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.582 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.584 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.589 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 15.0582ms
+2025-04-20 17:26:05.630 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.630 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.630 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.630 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.636 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.637 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.640 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.642 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.642 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.644 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.644 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.644 +06:00 [INF] Processing finished. Missed chellenges activities count: 0
+2025-04-20 17:26:05.669 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/_vs/browserLink - 200 null text/javascript; charset=UTF-8 96.2421ms
+2025-04-20 17:26:05.878 +06:00 [INF] Request starting HTTP/2 GET https://localhost:44356/swagger/v1/swagger.json - null null
+2025-04-20 17:26:05.887 +06:00 [INF] Request finished HTTP/2 GET https://localhost:44356/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 9.2923ms
+2025-04-20 17:26:16.148 +06:00 [INF] Request starting HTTP/1.1 POST https://localhost:44356/api/challenges - application/json 537
+2025-04-20 17:26:16.262 +06:00 [INF] Executing endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:26:18.081 +06:00 [INF] Setting HTTP status code 200.
+2025-04-20 17:26:18.085 +06:00 [INF] Writing value of type 'CreateChallengeResponse' as Json.
+2025-04-20 17:26:18.092 +06:00 [INF] Executed endpoint 'HTTP: POST api/challenges/ => CreateChallenge'
+2025-04-20 17:26:18.094 +06:00 [INF] Request finished HTTP/1.1 POST https://localhost:44356/api/challenges - 200 null application/json; charset=utf-8 1946.4516ms

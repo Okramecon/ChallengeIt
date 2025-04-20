@@ -24,7 +24,7 @@ namespace ChallengeIt.Application.Features.Challenges.Queries
 
             var today = _dateTimeProvider.UtcNow.Date;
 
-            var todayCheckIns = await _challengesRepository.GetCheckinsForDayAsync(today, userId, cancellationToken);
+            var todayCheckIns = await _challengesRepository.GetCheckinsForDateAsync(today, userId, cancellationToken);
             return todayCheckIns;
         }
     }

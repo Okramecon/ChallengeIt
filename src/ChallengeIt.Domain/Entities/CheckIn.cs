@@ -28,6 +28,9 @@ public class CheckIn : Entity<Guid>
     [Column("is_last")]
     public bool IsLast { get; set; }
 
+    [Column("time_zone")]
+    public string TimeZoneId { get; set; } = string.Empty;
+
     public User? User { get; set; }
     public Challenge? Challenge { get; set; }
 }

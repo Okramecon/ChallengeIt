@@ -33,6 +33,9 @@ namespace ChallengeIt.Infrastructure
                 .HasOne(ci => ci.User)
                 .WithMany(c => c.CheckIns)
                 .HasForeignKey(ci => ci.UserId);
+            
+            modelBuilder.Entity<CheckIn>()
+                .HasIndex(ci => ci.TimeZoneId);
         }
     }
 }
