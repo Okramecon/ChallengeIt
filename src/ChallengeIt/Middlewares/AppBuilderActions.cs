@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Diagnostics;
+using Serilog;
 
 namespace ChallengeIt.Middlewares;
 
@@ -16,6 +17,7 @@ public static class AppBuilderActions
 
             if (exception != null)
             {
+                Log.Error(exception, exception.Message);
                 var result = JsonSerializer.Serialize(new { error = exception.Message });
                 await context.Response.WriteAsync(result);
             }
