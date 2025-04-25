@@ -52,10 +52,9 @@ public class CreateChallengeCommandHandler(
             }
 
             // Insert Check-Ins
-            var checkIns = CreateCheckIns(challengeId, userId, checkInDates).ToList();
+            var checkIns = CreateCheckIns(challengeId, userId, checkInDates, timeZone.Id).ToList();
             checkIns.Last().IsLast = true;
-            // TODO Okram
-            //throw new Exception("Prevent creating checkins");
+
             var createdCheckIns = await _unitOfWork.CheckIns.CreateBatchAsync(checkIns, cancellationToken);
 
             _unitOfWork.Commit();
@@ -88,7 +87,7 @@ public class CreateChallengeCommandHandler(
             : TimeZoneInfo.FindSystemTimeZoneById(request.TimeZone);
     }
 
-    private static IEnumerable<CheckIn> CreateCheckIns(Guid challengeId, long userId, List<DateTime> dates) => dates
+    private static IEnumerable<CheckIn> CreateCheckIns(Guid challengeId, long userId, List<DateTime> dates, string timeZone) => dates
         .Distinct()
         .OrderBy(d => d.Date)
         .Select(d => new CheckIn
@@ -97,6 +96,7 @@ public class CreateChallengeCommandHandler(
             ChallengeId = challengeId,
             UserId = userId,
             Date = d,
-            Checked = false
+            Checked = false,
+            TimeZoneId = timeZone
         });
 }

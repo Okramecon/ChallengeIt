@@ -73,4 +73,15 @@ public class ChallengesRepository(ISqlDbContext sqlDbContext)
         return true;
 
     }
+
+    const string UpdateChallengeStatusQuery = $"UPDATE challenges SET status = @status where id = @id::uuid";
+
+    public async Task UpdateChallengeStatusAsync(Guid challengeId, ChallengeStatus status)
+    {
+        await DbConnection.QuerySingleAsync(UpdateChallengeStatusQuery, new
+        {
+            id = challengeId,
+            status = status.ToString()
+        });
+    }
 }

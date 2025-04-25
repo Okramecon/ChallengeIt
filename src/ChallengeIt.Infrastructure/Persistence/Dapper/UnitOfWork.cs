@@ -54,8 +54,12 @@ public class UnitOfWork(ISqlDbContext sqlDbContext) : IUnitOfWork
         sqlDbContext.CurrentTransaction?.Dispose();
     }
     
-    public IChallengesRepository Challenges { get; private set; } = new ChallengesRepository(sqlDbContext);
+    private readonly Lazy<ChallengesRepository> _challengesLazy = new(() => new ChallengesRepository(sqlDbContext));
+    public IChallengesRepository Challenges => _challengesLazy.Value;
 
-    public IUsersRepository Users { get; private set; } = new UsersRepository(sqlDbContext);
-    public ICheckInsRepository CheckIns { get; private set; } = new CheckInsRepository(sqlDbContext);
+    private readonly Lazy<UsersRepository> _usersLazy = new(() => new UsersRepository(sqlDbContext));
+    public IUsersRepository Users => _usersLazy.Value;
+
+    private readonly Lazy<CheckInsRepository> _checkInsLazy = new(() => new CheckInsRepository(sqlDbContext));
+    public ICheckInsRepository CheckIns => _checkInsLazy.Value;
 }

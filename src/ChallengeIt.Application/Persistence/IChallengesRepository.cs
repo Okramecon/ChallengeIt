@@ -8,4 +8,5 @@ public interface IChallengesRepository : IBaseCrudRepository<Challenge, Guid>
 {
     Task<Page<Challenge>> GetUserChallengesAsync(PageRequest pageRequest, long userId, CancellationToken cancellationToken = default);
     Task<bool> ProcessMissedChellengeActivityAsync(Guid challengeId, IDbTransaction? transaction = null);
+    Task UpdateChallengeStatusAsync(Guid challengeId, ChallengeStatus status);
 }

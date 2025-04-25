@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Threading;
 using ChallengeIt.Application.Persistence;
 using ChallengeIt.Application.Security;
 using ChallengeIt.Application.Utils;
+using ChallengeIt.Domain.Entities;
 using ChallengeIt.Domain.Errors;
 using ErrorOr;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace ChallengeIt.Application.Features.Challenges.Commands.CheckInChallengeDay;
 
@@ -12,7 +15,9 @@ public class CheckInChallengeDayCommandHandler(
     IChallengesRepository challengesRepository,
     ICheckInsRepository checkInsRepository,
     ICurrentUserProvider userProvider,
-    IDateTimeProvider dateTimeProvider)
+    IDateTimeProvider dateTimeProvider,
+    IUnitOfWork unitOfWork,
+    ILogger<CheckInChallengeDayCommandHandler> logger)
     : IRequestHandler<CheckInChallengeDayCommand, ErrorOr<Success>>
 {
     public async Task<ErrorOr<Success>> Handle(CheckInChallengeDayCommand request, CancellationToken cancellationToken)
@@ -53,6 +58,7 @@ public class CheckInChallengeDayCommandHandler(
         }
 
         var currentDate = dateTimeProvider.UtcNow.Date;
+
         if (!challenge.IsActive(currentDate))
         {
             return Error.Conflict(description: "Challenge is not active.");
@@ -93,7 +99,37 @@ public class CheckInChallengeDayCommandHandler(
             return Error.Conflict(description : "You cannot check in this date.");
         }
 
-        await checkInsRepository.CheckInChallengeDate(checkInId, cancellationToken);
-        return Result.Success;
+        if (checkInEntity.IsLast)
+        {
+            await TryProcessLastCheckinDay(checkInId, checkInEntity.ChallengeId, cancellationToken);
+        } 
+        else
+        {
+            await checkInsRepository.CheckInChallengeDate(checkInId, cancellationToken);
+        }
+
+            return Result.Success;
     }
+
+    private async Task<bool> TryProcessLastCheckinDay(Guid checkinId, Guid challengeId, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            unitOfWork.BeginTransaction();
+
+            await unitOfWork.Challenges.UpdateChallengeStatusAsync(challengeId, ChallengeStatus.Completed);
+
+            await unitOfWork.CheckIns.CheckInChallengeDate(checkinId, cancellationToken);
+
+            unitOfWork.Commit();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Error occured while trying to execute CheckInChallengeDayCommandHandler. {CheckInId}", checkinId);
+            unitOfWork.Rollback();
+            return false;
+        }
+    }
+
 }

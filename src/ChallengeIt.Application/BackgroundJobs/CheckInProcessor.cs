@@ -26,7 +26,7 @@ namespace ChallengeIt.Application.BackgroundJobs
                 missedChallengeActivityCount++;
             }
 
-            logger.LogInformation("Processing finished. Missed chellenges activities count: {MissedChallengeActivityCount}", missedChallengeActivityCount);
+            logger.LogInformation("Processing finished. Missed chellenges activities count: {MissedChallengeActivityCount} | TimeZone: {TimeZone}", missedChallengeActivityCount, timezoneId);
         }
     }
 }

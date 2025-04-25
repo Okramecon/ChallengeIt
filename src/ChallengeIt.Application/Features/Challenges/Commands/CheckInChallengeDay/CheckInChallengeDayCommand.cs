@@ -5,4 +5,5 @@ namespace ChallengeIt.Application.Features.Challenges.Commands.CheckInChallengeD
 
 public record CheckInChallengeDayCommand(
     Guid? ChallengeId,
-    Guid? CheckInId) : IRequest<ErrorOr<Success>>;
+    Guid? CheckInId,
+    string? TimeZoneId = null) : IRequest<ErrorOr<Success>>;
