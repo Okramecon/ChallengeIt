@@ -42,8 +42,9 @@ public class ChallengesRepository(ISqlDbContext sqlDbContext)
 
     const string UpdateMissedDaysCountQuery = $"UPDATE challenges SET missed_days_count = @missedDayCount where id = @id::uuid";
     const string UpdateStatusToFailedQuery = $"UPDATE challenges SET missed_days_count = @missedDayCount, status = @status where id = @id::uuid";
+    const string MarkAllChallengeDaysAsFailed = $"UPDATE checkins SET failed_challenge = true where challenge_id = @challengeId::uuid";
 
-    public async Task<bool> ProcessMissedChellengeActivityAsync(Guid challengeId, IDbTransaction? transaction = null)
+    public async Task<bool> ProcessMissedChallengeActivityAsync(Guid challengeId, IDbTransaction? transaction = null)
     {
         var challenge = await GetByIdAsync(challengeId);
 
@@ -54,17 +55,22 @@ public class ChallengesRepository(ISqlDbContext sqlDbContext)
         challenge.MissedDaysCount += 1;
         if (challenge.MissedDaysCount > challenge.MaxAllowedMissedDaysCount)
         {
-            await DbConnection.QuerySingleAsync(UpdateStatusToFailedQuery, new
+            await DbConnection.ExecuteAsync(UpdateStatusToFailedQuery, new
             {
                 id = challengeId,
                 missedDayCount = challenge.MissedDaysCount,
                 status = nameof(ChallengeStatus.Failed)
             });
 
+            await DbConnection.ExecuteAsync(MarkAllChallengeDaysAsFailed, new
+            {
+                challengeId,
+            });
+
             return true;
         }
 
-        await DbConnection.QuerySingleAsync(UpdateMissedDaysCountQuery, new
+        await DbConnection.ExecuteAsync(UpdateMissedDaysCountQuery, new
         {
             id = challengeId,
             missedDayCount = challenge.MissedDaysCount

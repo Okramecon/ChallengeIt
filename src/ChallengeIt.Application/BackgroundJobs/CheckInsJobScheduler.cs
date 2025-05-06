@@ -13,7 +13,7 @@ namespace ChallengeIt.Application.BackgroundJobs
             {
                 _recurringJobManager.AddOrUpdate<CheckInProcessor>(
                     $"checkin-processor-{timeZone.Id}",
-                    processor => processor.ProcessTimezoneCheckins(timeZone.Id),
+                    processor => processor.TryProcessTimezoneCheckins(timeZone.Id),
                     Cron.Daily(0, 5), // 12:05 AM
                     new RecurringJobOptions
                     {
