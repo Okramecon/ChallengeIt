@@ -26,7 +26,7 @@ namespace ChallengeIt.Application.Features.Challenges.Queries
 
             var todayCheckIns = await _challengesRepository.GetCheckinsForDateAsync(today, userId, cancellationToken);
 
-            return todayCheckIns.OrderByDescending(x => x.Checked).ToList();
+            return todayCheckIns.OrderByDescending(x => x.Checked).ThenBy(x => x.ChallengeTitle).ToList();
         }
     }
 }

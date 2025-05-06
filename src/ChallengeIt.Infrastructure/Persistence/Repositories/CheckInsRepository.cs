@@ -45,7 +45,7 @@ public class CheckInsRepository(ISqlDbContext context)
         SELECT c.id AS ""Id"", c.date AS ""Date"", c.checked AS ""Checked"", c.challenge_id AS ""ChallengeId"", c.user_id AS ""UserId"", c0.title AS ""ChallengeTitle""
         FROM checkins as c
         INNER JOIN challenges AS c0 ON c.challenge_id = c0.id
-        WHERE c.user_id = @id AND c.date = @date::date;
+        WHERE c.user_id = @id AND c.date = @date::date AND c.failed_challenge = false;
     ";
 
     public async Task<List<TodayCheckInModel>> GetCheckinsForDateAsync(DateTime date, long userId, CancellationToken cancellationToken = default)
